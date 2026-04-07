@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo de Impostos para Imigrantes nos EUA — Kelly Moraes</title>
+    <meta name="description" content="Apostila completa de impostos para imigrantes brasileiros nos Estados Unidos. Entenda o sistema, evite erros e aumente seu reembolso. Ano Fiscal 2027.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #1A3D6E;
+            --blue-light: #2a5a9e;
+            --blue-dark: #0f2a4d;
+            --gold: #d4af69;
+            --gold-light: #e8cc8e;
+            --bg: #f3efe6;
+            --bg-white: #ffffff;
+            --text: #2c2c2c;
+            --text-secondary: #555;
+            --text-light: #888;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text);
+            background: var(--bg-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(26, 61, 110, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 14px 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(26, 61, 110, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+        .navbar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-brand {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 18pt;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .navbar-brand span { color: var(--gold); }
+        .navbar-links { display: flex; gap: 28px; align-items: center; }
+        .navbar-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 10pt;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .navbar-links a:hover { color: var(--gold); }
+        .navbar-cta {
+            background: var(--gold) !important;
+            color: var(--blue) !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px !important;
+            transition: all 0.2s !important;
+        }
+        .navbar-cta:hover {
+            background: var(--gold-light) !important;
+            transform: translateY(-1px);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--blue) 0%, #1f4575 40%, #243f6a 70%, var(--blue) 100%);
+            padding: 120px 24px 80px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('image/cover-watermark.svg') center / cover no-repeat;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+            opacity: 0.4;
+            pointer-events: none;
+            mix-blend-mode: soft-light;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text { color: white; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212,175,105,0.15);
+            border: 1px solid rgba(212,175,105,0.4);
+            color: var(--gold);
+            padding: 6px 18px;
+            border-radius: 25px;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42pt;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--gold);
+        }
+        .hero-subtitle {
+            font-size: 16pt;
+            color: rgba(255,255,255,0.85);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold);
+            color: var(--blue);
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 12pt;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212,175,105,0.35);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 400;
+            font-size: 12pt;
+            text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.4);
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Hero Book Mockup */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .book-mockup {
+            width: 340px;
+            background: linear-gradient(135deg, #1A3D6E 0%, #243f6a 100%);
+            border-radius: 6px 16px 16px 6px;
+            padding: 40px 32px;
+            color: white;
+            text-align: center;
+            box-shadow:
+                -6px 0 0 #14304f,
+                0 20px 60px rgba(0,0,0,0.35),
+                0 0 0 1px rgba(255,255,255,0.08) inset;
+            position: relative;
+        }
+        .book-mockup::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.05));
+            border-radius: 6px 0 0 6px;
+        }
+        .book-mockup .book-icon { font-size: 32pt; margin-bottom: 12px; }
+        .book-mockup .book-divider {
+            width: 50px; height: 2px;
+            background: var(--gold);
+            margin: 14px auto;
+            border: none;
+        }
+        .book-mockup h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16pt;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+        .book-mockup .book-sub {
+            font-size: 8pt;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+        .book-mockup .book-author {
+            font-size: 9pt;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .book-mockup .book-year {
+            display: inline-block;
+            font-size: 8pt;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .book-mockup .book-footer-text {
+            margin-top: 18px;
+            font-size: 7pt;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+
+        /* ============ SOCIAL PROOF BAR ============ */
+        .proof-bar {
+            background: var(--bg);
+            padding: 28px 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .proof-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .proof-item strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 22pt;
+            color: var(--blue);
+        }
+        .proof-item span {
+            font-size: 9pt;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============ SECTIONS COMMON ============ */
+        .section {
+            padding: 90px 24px;
+        }
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 30pt;
+            color: var(--blue);
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+        .section-desc {
+            font-size: 13pt;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        .section-header-center {
+            text-align: center;
+        }
+        .section-header-center .section-desc {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============ PROBLEMS SECTION ============ */
+        .problems { background: var(--bg-white); }
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .problem-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        .problem-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+        .problem-card .card-icon {
+            font-size: 28pt;
+            margin-bottom: 14px;
+        }
+        .problem-card h4 {
+            font-family: 'Lato', sans-serif;
+            font-size: 13pt;
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
+        .problem-card p {
+            font-size: 11pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============ WHAT YOU LEARN ============ */
+        .learn { background: var(--bg); }
+        .learn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .learn-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .learn-list li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 16px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .learn-list .li-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--blue), var(--blue-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16pt;
+        }
+        .learn-list .li-text strong {
+            display: block;
+            font-size: 11pt;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .learn-list .li-text span {
+            font-size: 10pt;
+            color: var(--text-light);
+        }
+        .learn-highlight {
+            background: linear-gradient(135deg, var(--blue), #243f6a);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .learn-highlight::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('image/cover-watermark.svg') center / cover no-repeat;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+        .learn-highlight h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20pt;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .learn-highlight p {
+            font-size: 12pt;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .learn-highlight .stat-row {
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+            position: relative;
+        }
+        .learn-highlight .stat {
+            text-align: center;
+            flex: 1;
+            padding: 14px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .learn-highlight .stat strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 22pt;
+            color: var(--gold);
+        }
+        .learn-highlight .stat span {
+            font-size: 9pt;
+            opacity: 0.8;
+        }
+
+        /* ============ TOOLS SECTION ============ */
+        .tools { background: var(--bg-white); }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .tool-card {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.25s;
+        }
+        .tool-card:hover {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .tool-card .tool-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 24pt;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .tool-card h4 {
+            font-size: 10pt;
+            color: var(--blue);
+            margin-bottom: 4px;
+        }
+        .tool-card p {
+            font-size: 9pt;
+            color: var(--text-light);
+        }
+
+        /* ============ ABOUT AUTHOR ============ */
+        .author-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #243f6a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .author-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('image/cover-watermark.svg') center / cover no-repeat;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .author-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .author-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+        }
+        .author-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24pt;
+            margin-bottom: 6px;
+        }
+        .author-info .author-role {
+            font-size: 12pt;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .author-info p {
+            font-size: 12pt;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        /* ============ CTA SECTION ============ */
+        .cta-section {
+            padding: 100px 24px;
+            background: var(--bg);
+            text-align: center;
+        }
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34pt;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            font-size: 14pt;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .cta-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 14pt;
+            color: var(--text-light);
+        }
+        .cta-price strong {
+            color: var(--blue);
+        }
+
+        /* ============ CONTACT ============ */
+        .contact {
+            padding: 60px 24px;
+            background: white;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12pt;
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-link:hover { color: var(--gold); }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--blue-dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 28px 24px;
+            font-size: 10pt;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 30pt; }
+            .hero-subtitle { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { order: -1; }
+            .book-mockup { width: 280px; padding: 30px 24px; }
+            .book-mockup h3 { font-size: 13pt; }
+            .learn-grid { grid-template-columns: 1fr; }
+            .author-inner { grid-template-columns: 1fr; text-align: center; }
+            .author-photo { width: 160px; height: 160px; }
+            .proof-inner { gap: 24px; }
+            .section-title { font-size: 24pt; }
+            .cta-section h2 { font-size: 26pt; }
+            .navbar-links { display: none; }
+            .navbar-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26, 61, 110, 0.98); padding: 20px; gap: 16px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeInUp 0.7s ease forwards; }
+        .delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .delay-3 { animation-delay: 0.45s; opacity: 0; }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24pt;
+            cursor: pointer;
+            padding: 4px;
+        }
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="navbar-brand">Impostos<span>USA</span></a>
+            <div class="navbar-links" id="navLinks">
+                <a href="#problemas">Problemas</a>
+                <a href="#conteudo">Conteúdo</a>
+                <a href="#ferramentas">Ferramentas</a>
+                <a href="#autora">Autora</a>
+                <a href="#contato" class="navbar-cta">Quero o Guia</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- ======== HERO ======== -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badge animate">📚 Ano Fiscal 2027</div>
+                <h1 class="animate delay-1">Guia Completo de<br>Impostos para <em>Imigrantes</em><br>nos EUA</h1>
+                <p class="hero-subtitle animate delay-2">
+                    Entenda o sistema, evite erros, aumente seu reembolso e organize sua vida financeira com segurança — tudo explicado em português.
+                </p>
+                <div class="hero-buttons animate delay-3">
+                    <a href="#contato" class="btn-primary">Quero o Guia Completo →</a>
+                    <a href="#conteudo" class="btn-secondary">Ver Conteúdo</a>
+                </div>
+            </div>
+            <div class="hero-visual animate delay-2">
+                <div class="book-mockup">
+                    <div class="book-icon">📋</div>
+                    <hr class="book-divider">
+                    <h3>Guia Completo de Impostos para Imigrantes nos EUA</h3>
+                    <p class="book-sub">Entenda o sistema, evite erros e aumente seu reembolso</p>
+                    <hr class="book-divider">
+                    <p class="book-author">Kelly Moraes — Preparadora de Impostos</p>
+                    <span class="book-year">📅 ANO FISCAL 2027</span>
+                    <p class="book-footer-text">
+                        11 ferramentas práticas • Checklists • Quizzes • Tabelas<br>
+                        Organização anual • Créditos e deduções
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== SOCIAL PROOF ======== -->
+    <div class="proof-bar">
+        <div class="proof-inner">
+            <div class="proof-item">
+                <strong>8+</strong>
+                <span>Capítulos Completos</span>
+            </div>
+            <div class="proof-item">
+                <strong>11</strong>
+                <span>Ferramentas Práticas</span>
+            </div>
+            <div class="proof-item">
+                <strong>100%</strong>
+                <span>Em Português</span>
+            </div>
+            <div class="proof-item">
+                <strong>2027</strong>
+                <span>Ano Fiscal Atualizado</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== PROBLEMS ======== -->
+    <section class="section problems" id="problemas">
+        <div class="section-inner">
+            <div class="section-header-center">
+                <div class="section-label">Você se identifica?</div>
+                <h2 class="section-title">Dores de quem chega nos EUA e não entende de impostos</h2>
+                <p class="section-desc">
+                    Milhares de imigrantes brasileiros cometem erros caros na declaração de imposto — não por falta de inteligência, mas por falta de informação clara e em português.
+                </p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="card-icon">😰</div>
+                    <h4>Medo de errar a declaração</h4>
+                    <p>Você não sabe quais formulários usar, o que declarar, ou se está esquecendo algo importante. O medo de cair na malha fina paralisa.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="card-icon">💸</div>
+                    <h4>Dinheiro perdido todo ano</h4>
+                    <p>Você paga mais imposto do que deveria — e nem sabe. Créditos, deduções e benefícios ficam de fora por falta de conhecimento.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="card-icon">📋</div>
+                    <h4>Bagunça com documentos</h4>
+                    <p>W-2, 1099, Schedule C, ITIN, SSN... parece outro idioma. Você não sabe organizar nem preparar a documentação necessária.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="card-icon">🇧🇷</div>
+                    <h4>Tudo em inglês, nada claro</h4>
+                    <p>As informações do IRS são complexas e em inglês. Tradutores automáticos não explicam — só confundem mais.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <h4>Dependentes e família</h4>
+                    <p>Você não sabe se pode declarar seus filhos, cônjuge ou pais. Erros aqui podem custar milhares de dólares em créditos perdidos.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="card-icon">🏢</div>
+                    <h4>Trabalha por conta própria?</h4>
+                    <p>Uber, delivery, limpeza, salão... Se você é autônomo, as regras são diferentes e mais complexas. Sem orientação, você paga o dobro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== WHAT YOU LEARN ======== -->
+    <section class="section learn" id="conteudo">
+        <div class="section-inner">
+            <div class="section-header-center">
+                <div class="section-label">O que você vai aprender</div>
+                <h2 class="section-title">Conteúdo completo, organizado e prático</h2>
+                <p class="section-desc">
+                    8 capítulos + glossário + 11 ferramentas práticas para você usar o ano inteiro.
+                </p>
+            </div>
+            <div class="learn-grid">
+                <ul class="learn-list">
+                    <li>
+                        <div class="li-icon">📘</div>
+                        <div class="li-text">
+                            <strong>Parte 1 — Entenda o Sistema</strong>
+                            <span>Por que declarar • Como o IRS funciona • Glossário completo</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li-icon">📗</div>
+                        <div class="li-text">
+                            <strong>Parte 2 — Organize sua Vida</strong>
+                            <span>Organização durante o ano • Processo de declaração passo a passo</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li-icon">📙</div>
+                        <div class="li-text">
+                            <strong>Parte 3 — Pague Menos Legalmente</strong>
+                            <span>Créditos e deduções • Dependentes • Estratégias para pagar menos</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li-icon">📕</div>
+                        <div class="li-text">
+                            <strong>Parte 4 — Evite os Erros</strong>
+                            <span>Erros comuns que custam dinheiro • Conclusão e próximos passos</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="learn-highlight">
+                    <h3>📊 Números que importam</h3>
+                    <p>Este guia inclui valores atualizados do IRS para o ano fiscal 2027, incluindo limites de renda, valores de créditos, deduções padrão e taxas de quilometragem.</p>
+                    <p>Tudo com exemplos reais e em português, para que qualquer pessoa entenda — independentemente do nível de conhecimento.</p>
+                    <div class="stat-row">
+                        <div class="stat">
+                            <strong>$7.830</strong>
+                            <span>EIC máximo (3+ filhos)</span>
+                        </div>
+                        <div class="stat">
+                            <strong>$2.200</strong>
+                            <span>Child Tax Credit</span>
+                        </div>
+                        <div class="stat">
+                            <strong>$0,70</strong>
+                            <span>por milha (IRS)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== TOOLS ======== -->
+    <section class="section tools" id="ferramentas">
+        <div class="section-inner">
+            <div class="section-header-center">
+                <div class="section-label">Ferramentas práticas</div>
+                <h2 class="section-title">11 ferramentas para usar o ano inteiro</h2>
+                <p class="section-desc">
+                    Não é só leitura — são ferramentas práticas com campos preenchíveis para você organizar sua vida financeira.
+                </p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-num">01</div>
+                    <h4>Checklist de Documentos</h4>
+                    <p>Nunca mais esqueça um documento na hora de declarar.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">02</div>
+                    <h4>Checklist Anual</h4>
+                    <p>Planejamento mês a mês para estar sempre preparado.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">03</div>
+                    <h4>Lista de Rendas</h4>
+                    <p>Todos os tipos de renda que você precisa declarar.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">04</div>
+                    <h4>Quiz de Rendas</h4>
+                    <p>Teste seus conhecimentos sobre tipos de renda.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">05</div>
+                    <h4>Quiz Familiar</h4>
+                    <p>Dependentes e childcare — descubra o que você tem direito.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">06</div>
+                    <h4>Dedutível ou Não?</h4>
+                    <p>Tabela completa do que é e do que não é dedutível.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">07</div>
+                    <h4>Despesas Schedule C</h4>
+                    <p>Controle de despesas para quem trabalha por conta própria.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">08</div>
+                    <h4>Despesas de Imóvel</h4>
+                    <p>Controle para quem tem propriedades de aluguel.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">09</div>
+                    <h4>Deduções Pessoais</h4>
+                    <p>Registro de todas as suas deduções no Form 1040.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">10</div>
+                    <h4>Controle de Quilometragem</h4>
+                    <p>Modelo completo para registrar cada viagem de negócio.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">11</div>
+                    <h4>Controle de Recibos</h4>
+                    <p>Organize e digitalize todos os seus recibos fiscais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== AUTHOR ======== -->
+    <section class="section author-section" id="autora">
+        <div class="author-inner">
+            <img src="image/autora.png" alt="Kelly Moraes" class="author-photo">
+            <div class="author-info">
+                <div class="section-label" style="color: var(--gold-light);">Conheça a autora</div>
+                <h3>Kelly Moraes</h3>
+                <div class="author-role">Preparadora de Impostos</div>
+                <p>
+                    Com anos de experiência atendendo famílias imigrantes nos Estados Unidos, Kelly entende as dificuldades e medos de quem chega sem entender nada sobre o sistema tributário americano.
+                </p>
+                <p>
+                    Criou este guia para que pessoas como você — que trabalham duro e querem fazer o certo — tenham acesso a informações claras, em português e baseadas em dados reais do IRS.
+                </p>
+                <p>
+                    <strong style="color: var(--gold);">Missão:</strong> Ajudar imigrantes a economizar dinheiro e ter tranquilidade financeira nos EUA.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== CTA ======== -->
+    <section class="cta-section" id="contato">
+        <div class="cta-inner">
+            <div class="section-label">Garanta o seu</div>
+            <h2>Comece sua jornada de organização financeira hoje</h2>
+            <p>
+                Não espere a época de impostos chegar para se preparar. Quanto mais cedo você se organizar, mais dinheiro vai economizar. Este guia é para usar o ano inteiro.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/18572443842?text=Ol%C3%A1%20Kelly!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Guia%20Completo%20de%20Impostos." class="btn-primary" target="_blank" rel="noopener">
+                    📱 Falar pelo WhatsApp
+                </a>
+                <a href="mailto:expressinc1040@gmail.com?subject=Guia%20Completo%20de%20Impostos" class="btn-secondary" style="color: var(--blue); border-color: var(--blue);">
+                    ✉️ Enviar E-mail
+                </a>
+            </div>
+            <p class="cta-price">Material digital completo • Entrega imediata • <strong>Atualizado para 2027</strong></p>
+        </div>
+    </section>
+
+    <!-- ======== CONTACT INFO ======== -->
+    <div class="contact" id="contato-info">
+        <p style="font-size: 12pt; color: var(--text-secondary); margin-bottom: 8px;">
+            📞 Entre em contato diretamente com a Kelly Moraes
+        </p>
+        <div class="contact-links">
+            <a href="https://wa.me/18572443842" class="contact-link" target="_blank" rel="noopener">
+                📱 WhatsApp: (857) 244-3842
+            </a>
+            <a href="mailto:expressinc1040@gmail.com" class="contact-link">
+                ✉️ expressinc1040@gmail.com
+            </a>
+        </div>
+    </div>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <p>© 2027 Kelly Moraes — Preparadora de Impostos. Todos os direitos reservados.</p>
+        <p style="margin-top: 6px;">Este material é de caráter educacional e informativo. Consulte um CPA para orientação específica.</p>
+    </footer>
+
+    <!-- ======== SCRIPTS ======== -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Scroll animations (intersection observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.problem-card, .tool-card, .learn-list li').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

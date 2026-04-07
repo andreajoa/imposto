@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Agent tools
+.agent/
+.sixth/
+
+# Source docx files (keep only generated outputs)
+*.docx
+*.xlsx
