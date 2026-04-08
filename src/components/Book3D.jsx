@@ -1,82 +1,129 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
+const pages = [
+  { icon: '📋', title: 'Guia Completo de Impostos', subtitle: 'para Imigrantes nos EUA', color: '#1A3D6E' },
+  { icon: '📘', title: 'Entenda o Sistema', subtitle: 'Por que declarar • Como o IRS funciona', color: '#1A3D6E' },
+  { icon: '📗', title: 'Organize sua Vida', subtitle: 'Documentos • Checklists • Planejamento anual', color: '#1a5c3a' },
+  { icon: '📙', title: 'Pague Menos', subtitle: 'Créditos • Deduções • Estratégias legais', color: '#8a6914' },
+  { icon: '📕', title: 'Evite os Erros', subtitle: 'Erros comuns • Como se proteger', color: '#8b2020' },
+  { icon: '📊', title: '11 Ferramentas', subtitle: 'Checklists • Quizzes • Tabelas práticas', color: '#1A3D6E' },
+]
 
 export default function Book3D() {
-  const bookRef = useRef(null)
-  const [loaded, setLoaded] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState(0)
+  const [isFlipping, setIsFlipping] = useState(false)
+  const flipIntervalRef = useRef(null)
 
-  useEffect(() => {
-    // Dynamically import Spline runtime
-    let app = null
-    const loadSpline = async () => {
-      try {
-        const { Application } = await import('@splinetool/runtime')
-        const canvas = document.getElementById('spline-canvas')
-        if (canvas) {
-          app = new Application(canvas)
-          // Using a public Spline demo scene (you can replace with your own)
-          // To use your own: export from app.spline.design, save .splinecode to /public/3d/
-          // then change the URL below to '/3d/your-scene.splinecode'
-          await app.load('https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode')
-          setLoaded(true)
-        }
-      } catch (err) {
-        console.log('Spline loading failed, using CSS 3D book fallback:', err.message)
-        setLoaded(false)
-      }
-    }
-    loadSpline()
-    return () => { if (app) app.dispose() }
-  }, [])
-
-  if (!loaded) {
-    return (
-      <div className="hero-visual animate delay-2">
-        <div className="book-3d-wrapper">
-          <div className="book-3d" ref={bookRef}>
-            {/* Front Cover */}
-            <div className="book-cover">
-              <div className="book-icon-3d">📋</div>
-              <hr className="book-divider-3d" />
-              <h3>Guia Completo de Impostos para Imigrantes nos EUA</h3>
-              <p className="book-sub-3d">Entenda o sistema, evite erros e aumente seu reembolso</p>
-              <hr className="book-divider-3d" />
-              <p className="book-author-3d">Kelly Marques — Preparadora de Impostos</p>
-              <span className="book-year-3d">📅 GUIA COMPLETO</span>
-              <p className="book-footer-3d">
-                11 ferramentas práticas • Checklists • Quizzes • Tabelas<br />
-                Organização anual • Créditos e deduções
-              </p>
-            </div>
-            {/* Spine */}
-            <div className="book-spine">
-              <span className="book-spine-text">GUIA DE IMPOSTOS</span>
-            </div>
-            {/* Back */}
-            <div className="book-back" />
-            {/* Edges */}
-            <div className="book-top" />
-            <div className="book-bottom" />
-            <div className="book-pages-right" />
-          </div>
-          {/* Shadow */}
-          <div className="book-shadow" />
-          {/* Sparkles */}
-          <div className="sparkle-container">
-            <div className="sparkle" />
-            <div className="sparkle" />
-            <div className="sparkle" />
-            <div className="sparkle" />
-            <div className="sparkle" />
-            <div className="sparkle" />
-          </div>
-        </div>
-      </div>
-    )
+  const handleMouseEnter = () => {
+    setIsOpen(true)
+    setIsFlipping(true)
+    let page = 0
+    flipIntervalRef.current = setInterval(() => {
+      page++
+      if (page >= pages.length) page = 0
+      setCurrentPage(page)
+    }, 1800)
   }
 
+  const handleMouseLeave = () => {
+    setIsOpen(false)
+    setIsFlipping(false)
+    if (flipIntervalRef.current) {
+      clearInterval(flipIntervalRef.current)
+      flipIntervalRef.current = null
+    }
+    setTimeout(() => setCurrentPage(0), 800)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (flipIntervalRef.current) clearInterval(flipIntervalRef.current)
+    }
+  }, [])
+
   return (
-    <div className="hero-visual animate delay-2">
-      <canvas id="spline-canvas" style={{ width: '100%', height: '400px', borderRadius: '12px' }} />
+    <div
+      className="hero-visual animate delay-2"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={`book-3d-container ${isOpen ? 'book-open' : 'book-closed'}`}>
+        {/* Left page */}
+        <div className="book-left-page">
+          {isOpen && currentPage > 0 && (
+            <div className="page-content-inner" style={{ opacity: 1 }}>
+              <div className="page-decoration" />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div className="page-icon">{pages[currentPage > 0 ? currentPage - 1 : pages.length - 1].icon}</div>
+                <h4 className="page-title">{pages[currentPage > 0 ? currentPage - 1 : pages.length - 1].title}</h4>
+                <p className="page-subtitle">{pages[currentPage > 0 ? currentPage - 1 : pages.length - 1].subtitle}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Right page */}
+        <div className="book-right-page">
+          <div className="page-content-inner">
+            <div className="page-decoration" />
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div className="page-icon">{pages[currentPage].icon}</div>
+              <h4 className="page-title">{pages[currentPage].title}</h4>
+              <p className="page-subtitle">{pages[currentPage].subtitle}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Flipping page overlay */}
+        {isOpen && isFlipping && (
+          <div className="book-flip-page" key={currentPage}>
+            <div className="page-content-inner flip-content">
+              <div className="page-decoration flip-decoration" />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div className="page-icon">{pages[currentPage].icon}</div>
+                <h4 className="page-title">{pages[currentPage].title}</h4>
+                <p className="page-subtitle">{pages[currentPage].subtitle}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Book spine */}
+        <div className="book-3d-spine">
+          <span className="spine-label">GUIA DE IMPOSTOS</span>
+        </div>
+
+        {/* Book cover (visible when closed) */}
+        <div className={`book-3d-cover ${isOpen ? 'cover-hidden' : 'cover-visible'}`}>
+          <div className="cover-decoration" />
+          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+            <div className="book-icon-3d">📋</div>
+            <hr className="book-divider-3d" />
+            <h3 className="cover-title">Guia Completo de<br />Impostos para<br />Imigrantes nos EUA</h3>
+            <hr className="book-divider-3d" />
+            <p className="cover-author">Kelly Marques</p>
+            <p className="cover-role">Preparadora de Impostos</p>
+            <span className="cover-badge">📅 GUIA COMPLETO</span>
+            <p className="cover-footer">11 ferramentas • Checklists • Quizzes<br />Créditos • Deduções • Organização</p>
+          </div>
+        </div>
+
+        {/* Book edges */}
+        <div className="book-3d-top-edge" />
+        <div className="book-3d-bottom-edge" />
+        <div className="book-3d-right-edge" />
+
+        {/* Shadow */}
+        <div className="book-3d-shadow" />
+
+        {/* Hover hint */}
+        {!isOpen && (
+          <div className="book-hover-hint">
+            <span>✨ Passe o mouse para folhear</span>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
