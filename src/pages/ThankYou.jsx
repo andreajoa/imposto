@@ -2,7 +2,7 @@ export default function ThankYou() {
   const handleDownload = () => {
     // Direct download of the PDF
     const link = document.createElement('a')
-    link.href = '/guia-impostos-imigrantes-eua.pdf'
+    link.href = '/guia-impostos-imigrantes-eua-padded.pdf'
     link.download = 'Guia-Completo-Impostos-Imigrantes-EUA-Kelly-Marques.pdf'
     document.body.appendChild(link)
     link.click()
