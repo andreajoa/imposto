@@ -40,8 +40,8 @@ export default function Book3D() {
               <h3>Guia Completo de Impostos para Imigrantes nos EUA</h3>
               <p className="book-sub-3d">Entenda o sistema, evite erros e aumente seu reembolso</p>
               <hr className="book-divider-3d" />
-              <p className="book-author-3d">Kelly Moraes — Preparadora de Impostos</p>
-              <span className="book-year-3d">📅 ANO FISCAL 2027</span>
+              <p className="book-author-3d">Kelly Marques — Preparadora de Impostos</p>
+              <span className="book-year-3d">📅 GUIA COMPLETO</span>
               <p className="book-footer-3d">
                 11 ferramentas práticas • Checklists • Quizzes • Tabelas<br />
                 Organização anual • Créditos e deduções
@@ -49,7 +49,7 @@ export default function Book3D() {
             </div>
             {/* Spine */}
             <div className="book-spine">
-              <span className="book-spine-text">GUIA DE IMPOSTOS 2027</span>
+              <span className="book-spine-text">GUIA DE IMPOSTOS</span>
             </div>
             {/* Back */}
             <div className="book-back" />

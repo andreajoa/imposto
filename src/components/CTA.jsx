@@ -24,7 +24,7 @@ export default function CTA() {
             ✉️ Enviar E-mail
           </a>
         </div>
-        <p className="cta-price">Material digital completo • Entrega imediata • <strong>Atualizado para 2027</strong></p>
+        <p className="cta-price">Material digital completo • Entrega imediata • <strong>Sempre atualizado</strong></p>
       </div>
     </section>
   )

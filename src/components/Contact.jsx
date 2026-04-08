@@ -2,7 +2,7 @@ export default function Contact() {
   return (
     <section className="contact">
       <p style={{ color: 'var(--text-light)', fontSize: '10pt', marginBottom: '6px' }}>
-        📞 Entre em contato diretamente com a Kelly Moraes
+        📞 Entre em contato diretamente com a Kelly Marques
       </p>
       <div className="contact-links">
         <a href="https://wa.me/18572443842" className="contact-link" target="_blank" rel="noopener">

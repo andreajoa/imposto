@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="hero">
       <div className="hero-inner">
         <div className="hero-text">
-          <div className="hero-badge animate">📚 Ano Fiscal 2027</div>
+          <div className="hero-badge animate">📚 Guia de Impostos</div>
           <h1 className="animate delay-1">Guia Completo de<br />Impostos para <em>Imigrantes</em><br />nos EUA</h1>
           <p className="hero-subtitle animate delay-2">
             Entenda o sistema, evite erros, aumente seu reembolso e organize sua vida financeira com segurança — tudo explicado em português.

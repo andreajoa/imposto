@@ -36,7 +36,7 @@ export default function Learn() {
           </ul>
           <div className="learn-highlight">
             <h3>📊 Números que importam</h3>
-            <p>Este guia inclui valores atualizados do IRS para o ano fiscal 2027, incluindo limites de renda, valores de créditos, deduções padrão e taxas de quilometragem.</p>
+            <p>Este guia inclui valores atualizados do IRS para o ano fiscal vigente, incluindo limites de renda, valores de créditos, deduções padrão e taxas de quilometragem.</p>
             <p>Tudo com exemplos reais e em português, para que qualquer pessoa entenda — independentemente do nível de conhecimento.</p>
             <div className="stat-row">
               {stats.map((s, i) => (

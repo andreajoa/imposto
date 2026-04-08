@@ -2,7 +2,7 @@ const proofs = [
   { num: '8+', label: 'Capítulos Completos' },
   { num: '11', label: 'Ferramentas Práticas' },
   { num: '100%', label: 'Em Português' },
-  { num: '2027', label: 'Ano Fiscal Atualizado' },
+  { num: '✓', label: 'Sempre Atualizado' },
 ]
 
 export default function ProofBar() {
