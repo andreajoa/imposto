@@ -1,6 +1,9 @@
 import Book3D from './Book3D'
+import { useCart } from '../context/CartContext'
 
 export default function Hero() {
+  const { addToCart } = useCart()
+
   return (
     <section className="hero">
       <div className="hero-inner">
@@ -11,9 +14,12 @@ export default function Hero() {
             Entenda o sistema, evite erros, aumente seu reembolso e organize sua vida financeira com segurança — tudo explicado em português.
           </p>
           <div className="hero-buttons animate delay-3">
-            <a href="#contato" className="btn-primary">Quero o Guia Completo →</a>
+            <button className="btn-primary" onClick={addToCart}>
+              🛒 Quero o Guia Completo
+            </button>
             <a href="#conteudo" className="btn-secondary">Ver Conteúdo</a>
           </div>
+          <p className="hero-price-tag animate delay-3">💰 R$ 47,00 • Entrega imediata • PDF</p>
         </div>
         <Book3D />
       </div>

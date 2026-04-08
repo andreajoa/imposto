@@ -26,4 +26,10 @@
         gap: 16px;
     }
     .nav-toggle { display: block; }
+
+    /* Cart responsive */
+    .cart-panel { max-width: 100%; right: -100%; }
+    .thankyou-container { padding: 40px 20px; }
+    .thankyou-title { font-size: 26pt; }
+    .thankyou-card { padding: 28px 20px; }
 }

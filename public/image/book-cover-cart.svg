@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="coverBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A3D6E"/>
+      <stop offset="50%" stop-color="#1f4575"/>
+      <stop offset="100%" stop-color="#1A3D6E"/>
+    </linearGradient>
+    <linearGradient id="spineShadow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.3)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </linearGradient>
+  </defs>
+  <!-- Book shape -->
+  <rect x="2" y="2" width="196" height="276" rx="4" fill="url(#coverBg)"/>
+  <!-- Spine shadow -->
+  <rect x="2" y="2" width="20" height="276" fill="url(#spineShadow)" rx="4"/>
+  <!-- Gold top line -->
+  <line x1="40" y1="50" x2="160" y2="50" stroke="#d4af69" stroke-width="1" opacity="0.6"/>
+  <!-- Icon -->
+  <text x="100" y="90" text-anchor="middle" font-size="32">📚</text>
+  <!-- Title -->
+  <text x="100" y="125" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="white" font-weight="bold">
+    <tspan x="100" dy="0">GUIA COMPLETO</tspan>
+    <tspan x="100" dy="20">DE IMPOSTOS</tspan>
+  </text>
+  <!-- Subtitle -->
+  <text x="100" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="rgba(255,255,255,0.7)">
+    <tspan x="100" dy="0">Para Imigrantes</tspan>
+    <tspan x="100" dy="16">nos EUA</tspan>
+  </text>
+  <!-- Divider -->
+  <line x1="70" y1="195" x2="130" y2="195" stroke="#d4af69" stroke-width="1.5"/>
+  <!-- Author -->
+  <text x="100" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="rgba(255,255,255,0.85)">Kelly Marques</text>
+  <text x="100" y="236" text-anchor="middle" font-size="8" fill="#d4af69">Especialista em Impostos</text>
+  <!-- Badge -->
+  <rect x="55" y="248" width="90" height="20" rx="10" fill="none" stroke="#d4af69" stroke-width="0.8"/>
+  <text x="100" y="262" text-anchor="middle" font-size="7.5" fill="#d4af69" font-weight="bold">SEMPRE ATUALIZADO</text>
+</svg>

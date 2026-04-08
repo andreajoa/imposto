@@ -1,4 +1,8 @@
+import { useCart } from '../context/CartContext'
+
 export default function CTA() {
+  const { addToCart } = useCart()
+
   return (
     <section className="cta-section" id="contato">
       <div className="cta-inner">
@@ -8,20 +12,16 @@ export default function CTA() {
           Não espere a época de impostos chegar para se preparar. Quanto mais cedo você se organizar, mais dinheiro vai economizar. Este guia é para usar o ano inteiro.
         </p>
         <div className="cta-buttons">
+          <button className="btn-primary" onClick={addToCart}>
+            🛒 Adicionar ao Carrinho — R$ 47,00
+          </button>
           <a
             href="https://wa.me/18572443842?text=Ol%C3%A1%20Kelly!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Guia%20Completo%20de%20Impostos."
-            className="btn-primary"
+            className="btn-secondary"
             target="_blank"
             rel="noopener"
           >
-            📱 Falar pelo WhatsApp
-          </a>
-          <a
-            href="mailto:expressinc1040@gmail.com?subject=Guia%20Completo%20de%20Impostos"
-            className="btn-secondary"
-            style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }}
-          >
-            ✉️ Enviar E-mail
+            📱 Dúvidas? Fale pelo WhatsApp
           </a>
         </div>
         <p className="cta-price">Material digital completo • Entrega imediata • <strong>Sempre atualizado</strong></p>
