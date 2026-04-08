@@ -8,7 +8,8 @@
 /* === RESET E BASE === */
 @page {
     size: A4;
-    margin: 2.5cm 2cm 2.5cm 3cm;
+    /* Aumenta as margens para dar mais distância das bordas */
+    margin: 3cm 3cm 3cm 3cm;
     @bottom-center {
         content: counter(page);
         font-size: 10pt;
@@ -23,9 +24,21 @@ body {
     font-size: 11pt;
     line-height: 1.65;
     color: #2c2c2c;
-    background: #fff;
-    border: 2px solid #1A3D6E;
-    padding: 10px;
+    /* Fundo estilo papel reciclado: cor levemente bege + textura SVG */
+    background-color: #f3efe6;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    /* Delimitação leve em azul para manter identidade (reduzida) */
+    border: 2px solid rgba(26,61,110,0.85);
+    /* Aumenta o padding para afastar o conteúdo das bordas */
+    padding: 48px;
+}
+
+/* Wrapper for content to keep a safe readable area and center on large screens */
+.page-content {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 40px; /* extra horizontal inner padding */
 }
 
 /* === TIPOGRAFIA === */
@@ -299,6 +312,7 @@ em { font-style: italic; }
 </div>
 
 <!-- ====== AVISO LEGAL + NOTA DA AUTORA ====== -->
+<div class="page-content">
 <div class="disclaimer">
     <strong>Aviso Legal (Disclaimer)</strong><br>
     Este material é de caráter <strong>educacional e informativo</strong>. Não substitui aconselhamento profissional de um CPA (Certified Public Accountant), contador licenciado ou advogado tributarista. As informações contidas neste guia são baseadas nas leis tributárias dos Estados Unidos para o ano fiscal 2027 e podem sofrer alterações.<br><br>
@@ -1725,5 +1739,6 @@ Sem registro = $0 de dedução. Com registro = até $1.540 de economia.
     <p style="color: #aaa; font-size: 9pt; margin-top: 30px;">© 2027 — Todos os direitos reservados.<br>Este material é para fins educacionais. Consulte um CPA para orientação específica.</p>
 </div>
 
+</div> 
 </body>
 </html>
