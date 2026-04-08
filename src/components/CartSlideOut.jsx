@@ -45,7 +45,8 @@ export default function CartSlideOut() {
                   <p className="cart-item-author">{item.author}</p>
                   <p className="cart-item-desc">{item.description}</p>
                   <p className="cart-item-price">
-                    <strong>R$ {item.price.toFixed(2).replace('.', ',')}</strong>
+                    <strong>${item.price.toFixed(2)}</strong>
+                    <span className="cart-item-price-original">${item.originalPrice?.toFixed(2) || ''}</span>
                   </p>
                 </div>
                 <button
@@ -64,7 +65,7 @@ export default function CartSlideOut() {
           <div className="cart-footer">
             <div className="cart-total">
               <span>Total</span>
-              <strong>R$ {total.toFixed(2).replace('.', ',')}</strong>
+              <strong>${total.toFixed(2)}</strong>
             </div>
             <button className="btn-cart-checkout" onClick={handleCheckout}>
               🔒 Pagar com Stripe

@@ -19,7 +19,7 @@ export default function Hero() {
             </button>
             <a href="#conteudo" className="btn-secondary">Ver Conteúdo</a>
           </div>
-          <p className="hero-price-tag animate delay-3">💰 R$ 47,00 • Entrega imediata • PDF</p>
+          <p className="hero-price-tag animate delay-3">💰 $4.99 <span className="price-original">(era $26.89)</span> • Entrega imediata • PDF</p>
         </div>
         <Book3D />
       </div>

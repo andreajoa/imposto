@@ -196,6 +196,22 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(212,175,105,0.35);
 }
+/* Original price styling */
+.price-original {
+    font-size: 0.8em;
+    color: rgba(255,255,255,0.6);
+    text-decoration: line-through;
+    margin-left: 6px;
+    font-weight: 400;
+}
+.btn-primary .btn-price-original {
+    display: block;
+    font-size: 0.75em;
+    color: rgba(26,61,110,0.6);
+    text-decoration: line-through;
+    font-weight: 500;
+    margin-top: 2px;
+}
 .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -706,6 +722,12 @@
     font-size: 13pt;
     color: var(--blue);
     margin: 0;
+}
+.cart-item-price-original {
+    font-size: 0.75em;
+    color: rgba(0,0,0,0.4);
+    text-decoration: line-through;
+    margin-left: 8px;
 }
 .cart-item-remove {
     flex-shrink: 0;
