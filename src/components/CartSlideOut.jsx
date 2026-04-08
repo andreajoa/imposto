@@ -42,7 +42,7 @@ export default function CartSlideOut() {
                 </div>
                 <div className="cart-item-details">
                   <h4>{item.title}</h4>
-                  <p className="cart-item-author">{item.author}</p>
+                  <p className="cart-item-author">Por {item.author} — {item.authorRole || 'Autor'}</p>
                   <p className="cart-item-desc">{item.description}</p>
                   <p className="cart-item-price">
                     <strong>${item.price.toFixed(2)}</strong>

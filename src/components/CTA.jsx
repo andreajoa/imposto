@@ -1,4 +1,4 @@
-import { useCart } from '../context/CartContext'
+import { useCart, BOOK } from '../context/CartContext'
 
 export default function CTA() {
   const { addToCart } = useCart()
@@ -26,6 +26,7 @@ export default function CTA() {
           </a>
         </div>
         <p className="cta-price">Material digital completo • Entrega imediata • <strong>Sempre atualizado</strong></p>
+        <p className="cta-author">Por {BOOK.author} — {BOOK.authorRole}</p>
       </div>
     </section>
   )

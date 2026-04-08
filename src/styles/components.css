@@ -239,6 +239,20 @@
     letter-spacing: 0.5px;
 }
 
+.hero-author {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.9);
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.cta-author {
+    font-size: 11pt;
+    color: var(--blue);
+    margin-top: 14px;
+    font-weight: 600;
+}
+
 /* ============ SOCIAL PROOF BAR ============ */
 .proof-bar {
     background: var(--bg);

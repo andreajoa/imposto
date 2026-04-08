@@ -6,6 +6,7 @@ const BOOK = {
   id: 'guia-impostos',
   title: 'Guia Completo de Impostos para Imigrantes nos EUA',
   author: 'Kelly Marques',
+  authorRole: 'Especialista em Impostos',
   price: 4.99,
   originalPrice: 26.89,
   image: '/image/book-cover-cart.svg',

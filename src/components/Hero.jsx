@@ -1,5 +1,5 @@
 import Book3D from './Book3D'
-import { useCart } from '../context/CartContext'
+import { useCart, BOOK } from '../context/CartContext'
 
 export default function Hero() {
   const { addToCart } = useCart()
@@ -20,6 +20,7 @@ export default function Hero() {
             <a href="#conteudo" className="btn-secondary">Ver Conteúdo</a>
           </div>
           <p className="hero-price-tag animate delay-3">💰 $4.99 <span className="price-original">(era $26.89)</span> • Entrega imediata • PDF</p>
+          <p className="hero-author">Por {BOOK.author} — {BOOK.authorRole}</p>
         </div>
         <Book3D />
       </div>
