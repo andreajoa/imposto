@@ -3,6 +3,11 @@ venv/
 __pycache__/
 *.pyc
 
+# Node / Vite
+node_modules/
+dist/
+*.local
+
 # OS
 .DS_Store
 Thumbs.db
@@ -11,6 +16,6 @@ Thumbs.db
 .agent/
 .sixth/
 
-# Source docx files (keep only generated outputs)
-*.docx
-*.xlsx
+# Temp files
+index-vite.html
+index-original.html
