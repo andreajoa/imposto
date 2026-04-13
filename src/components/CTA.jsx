@@ -13,7 +13,7 @@ export default function CTA() {
         </p>
         <div className="cta-buttons">
           <button className="btn-primary" onClick={addToCart}>
-            🛒 Adicionar ao Carrinho — $4.99
+            🛒 Adicionar ao Carrinho — $6.99
             <span className="btn-price-original">era $26.89</span>
           </button>
           <a
