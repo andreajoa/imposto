@@ -6,26 +6,25 @@ export default function CTA() {
   return (
     <section className="cta-section" id="contato">
       <div className="cta-inner">
-        <div className="section-label">Garanta o seu</div>
-        <h2>Comece sua jornada de organização financeira hoje</h2>
-        <p>
-          Não espere a época de impostos chegar para se preparar. Quanto mais cedo você se organizar, mais dinheiro vai economizar. Este guia é para usar o ano inteiro.
-        </p>
-        <div className="cta-buttons">
-          <button className="btn-primary" onClick={addToCart}>
-            🛒 Adicionar ao Carrinho — $6.99
-            <span className="btn-price-original">era $26.89</span>
-          </button>
-          <a
-            href="https://wa.me/18572443842?text=Ol%C3%A1%20Kelly!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Guia%20Completo%20de%20Impostos."
-            className="btn-secondary"
-            target="_blank"
-            rel="noopener"
-          >
-            📱 Dúvidas? Fale pelo WhatsApp
-          </a>
+        <div className="cta-product-mini">
+          <img src="/image/book-cover-cart.svg" alt="Guia Completo de Impostos para Imigrantes nos EUA" />
+          <div>
+            <h3>Guia Completo de Impostos para Imigrantes nos EUA</h3>
+            <p>PDF • Acesso imediato • Em português</p>
+          </div>
         </div>
-        <p className="cta-price">Material digital completo • Entrega imediata • <strong>Sempre atualizado</strong></p>
+
+        <div className="cta-price-box">
+          <span>Por apenas</span>
+          <strong>$6.99 <small>USD</small></strong>
+          <p>Pagamento único • Acesso vitalício</p>
+        </div>
+
+        <button className="btn-primary cta-final-button" onClick={addToCart}>
+          🛒 Quero o Guia Completo
+        </button>
+
+        <p className="secure-note">🔒 Compra segura via Stripe</p>
         <p className="cta-author">Por {BOOK.author} — {BOOK.authorRole}</p>
       </div>
     </section>

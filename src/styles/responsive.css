@@ -1,18 +1,73 @@
+@media (max-width: 980px) {
+    .hero-inner,
+    .split-intro,
+    .tools-inner,
+    .author-inner,
+    .cta-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 110px;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons,
+    .hero-meta {
+        justify-content: center;
+    }
+
+    .hero-showcase {
+        min-height: 420px;
+    }
+
+    .hero-card {
+        display: none;
+    }
+
+    .proof-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .problems-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .comparison-row {
+        grid-template-columns: 1fr;
+    }
+
+    .vs-badge {
+        margin: -8px auto;
+    }
+
+    .chapter-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-inner {
+        text-align: center;
+    }
+
+    .cta-product-mini {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
-    .hero h1 { font-size: 30pt; }
-    .hero-subtitle { margin-left: auto; margin-right: auto; }
-    .hero-buttons { justify-content: center; }
-    .hero-visual { order: -1; }
-    .book-3d-wrapper { width: 240px; height: 320px; }
-    .book-cover h3 { font-size: 12pt; }
-    .book-cover { padding: 24px 20px; }
-    .learn-grid { grid-template-columns: 1fr; }
-    .author-inner { grid-template-columns: 1fr; text-align: center; }
-    .author-photo { width: 160px; height: 160px; }
-    .proof-inner { gap: 24px; }
-    .section-title { font-size: 24pt; }
-    .cta-section h2 { font-size: 26pt; }
     .navbar-links { display: none; }
     .navbar-links.open {
         display: flex;
@@ -21,15 +76,82 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(26, 61, 110, 0.98);
-        padding: 20px;
-        gap: 16px;
+        background: rgba(8, 31, 60, 0.98);
+        padding: 22px;
+        gap: 18px;
     }
     .nav-toggle { display: block; }
 
-    /* Cart responsive */
-    .cart-panel { max-width: 100%; right: -100%; }
-    .thankyou-container { padding: 40px 20px; }
-    .thankyou-title { font-size: 26pt; }
-    .thankyou-card { padding: 28px 20px; }
+    .hero h1 {
+        font-size: 34pt;
+    }
+
+    .hero-showcase {
+        min-height: 340px;
+    }
+
+    .hero-pedestal {
+        width: 280px;
+    }
+
+    .book-3d-wrapper {
+        width: 240px;
+        height: 320px;
+    }
+
+    .book-cover h3 {
+        font-size: 12pt;
+    }
+
+    .book-cover {
+        padding: 24px 20px;
+    }
+
+    .proof-inner {
+        margin-top: -25px;
+    }
+
+    .proof-item {
+        padding: 22px 12px;
+    }
+
+    .section {
+        padding: 66px 20px;
+    }
+
+    .section-title {
+        font-size: 25pt;
+    }
+
+    .problems-grid,
+    .chapter-strip,
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .author-photo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .cta-product-mini {
+        flex-direction: column;
+    }
+
+    .cart-panel {
+        max-width: 100%;
+        right: -100%;
+    }
+
+    .thankyou-container {
+        padding: 40px 20px;
+    }
+
+    .thankyou-title {
+        font-size: 26pt;
+    }
+
+    .thankyou-card {
+        padding: 28px 20px;
+    }
 }
