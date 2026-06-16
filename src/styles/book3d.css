@@ -107,3 +107,75 @@
         height: 32px;
     }
 }
+
+/* ============ HERO FEATURE CARDS (abaixo do livro) ============ */
+.hero-showcase {
+    flex-direction: column;
+    gap: 28px;
+}
+
+.hero-pedestal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+.hero-feature-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(14px);
+    border-radius: 14px;
+    padding: 16px 14px;
+    color: white;
+    text-align: center;
+}
+
+.hero-feature-card strong {
+    display: block;
+    color: var(--gold);
+    font-size: 9.5pt;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.hero-feature-card span {
+    display: block;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    opacity: 0.78;
+}
+
+@media (max-width: 980px) {
+    .hero-feature-cards {
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-feature-cards {
+        max-width: 300px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .hero-feature-card {
+        padding: 12px 10px;
+    }
+
+    .hero-feature-card strong {
+        font-size: 8.5pt;
+    }
+
+    .hero-feature-card span {
+        font-size: 7.5pt;
+    }
+}

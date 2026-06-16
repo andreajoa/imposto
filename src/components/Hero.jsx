@@ -31,7 +31,7 @@ export default function Hero() {
           </div>
 
           <div className="hero-meta animate delay-3">
-            <span>💵 $6.99</span>
+            <span>💵 $24.99</span>
             <span>⚡ Acesso imediato</span>
             <span>📄 PDF</span>
             <span>🇧🇷 Em português</span>
@@ -41,23 +41,23 @@ export default function Hero() {
         </div>
 
         <div className="hero-showcase animate delay-2">
-          <div className="hero-card hero-card-left">
-            <strong>Passo a passo</strong>
-            <span>Do zero à declaração com confiança.</span>
-          </div>
-
-          <div className="hero-card hero-card-right top">
-            <strong>Em português</strong>
-            <span>Linguagem clara, exemplos reais e diretos.</span>
-          </div>
-
-          <div className="hero-card hero-card-right bottom">
-            <strong>Seguro e atualizado</strong>
-            <span>Conteúdo alinhado às regras fiscais vigentes.</span>
-          </div>
-
           <div className="hero-pedestal">
             <Book3D />
+          </div>
+
+          <div className="hero-feature-cards">
+            <div className="hero-feature-card">
+              <strong>Passo a passo</strong>
+              <span>Do zero à declaração com confiança.</span>
+            </div>
+            <div className="hero-feature-card">
+              <strong>Em português</strong>
+              <span>Linguagem clara, exemplos reais e diretos.</span>
+            </div>
+            <div className="hero-feature-card">
+              <strong>Seguro e atualizado</strong>
+              <span>Conteúdo alinhado às regras fiscais vigentes.</span>
+            </div>
           </div>
         </div>
       </div>
