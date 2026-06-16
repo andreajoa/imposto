@@ -5,7 +5,7 @@ export default function CartSlideOut() {
 
   const handleCheckout = () => {
     // Stripe checkout URL — replace with your actual Stripe Payment Link
-    const STRIPE_URL = 'https://buy.stripe.com/00w6oI83j2Wh6Jubg6aVa00'
+    const STRIPE_URL = 'https://buy.stripe.com/price_1TiysQLqEV1Yu7Ygr1KBxsNg'
     window.location.href = STRIPE_URL
     closeCart()
   }
