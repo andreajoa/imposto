@@ -16,7 +16,7 @@ export default function CTA() {
 
         <div className="cta-price-box">
           <span>Por apenas</span>
-          <strong>$6.99 <small>USD</small></strong>
+          <strong>$24.99 <small>USD</small></strong>
           <p>Pagamento único • Acesso vitalício</p>
         </div>
 
