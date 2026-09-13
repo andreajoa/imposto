@@ -1,25 +1,24 @@
-import { PRODUCT_DEFS, getPriceId, json, stripeRequest } from '../_lib/products.js'
+import { PRODUCT_DEFS, json, resolveStripePrice } from '../_lib/products.js'
 
 async function hydrateProduct(product, env) {
-  const priceId = getPriceId(product, env)
-  if (!priceId) {
-    return {
-      id: product.id,
-      title: product.title,
-      shortTitle: product.shortTitle,
-      route: product.route,
-      image: product.image,
-      orderBumpIds: product.orderBumpIds,
-      crossSellIds: product.crossSellIds,
-      configured: false,
-      available: false,
-      price: null,
-      currency: 'usd',
-    }
-  }
-
   try {
-    const price = await stripeRequest(env, `/v1/prices/${encodeURIComponent(priceId)}?expand[]=product`)
+    const price = await resolveStripePrice(product, env)
+    if (!price) {
+      return {
+        id: product.id,
+        title: product.title,
+        shortTitle: product.shortTitle,
+        route: product.route,
+        image: product.image,
+        orderBumpIds: product.orderBumpIds,
+        crossSellIds: product.crossSellIds,
+        configured: false,
+        available: false,
+        price: null,
+        currency: product.currency || 'usd',
+      }
+    }
+
     return {
       id: product.id,
       title: product.title,
@@ -29,9 +28,9 @@ async function hydrateProduct(product, env) {
       orderBumpIds: product.orderBumpIds,
       crossSellIds: product.crossSellIds,
       configured: true,
-      available: Boolean(price.active),
+      available: price.active !== false,
       price: typeof price.unit_amount === 'number' ? price.unit_amount / 100 : null,
-      currency: price.currency || 'usd',
+      currency: price.currency || product.currency || 'usd',
     }
   } catch (error) {
     console.error('Stripe catalog product error', product.id, error.message)
@@ -43,10 +42,10 @@ async function hydrateProduct(product, env) {
       image: product.image,
       orderBumpIds: product.orderBumpIds,
       crossSellIds: product.crossSellIds,
-      configured: true,
+      configured: false,
       available: false,
       price: null,
-      currency: 'usd',
+      currency: product.currency || 'usd',
     }
   }
 }
