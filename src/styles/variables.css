@@ -1,12 +1,23 @@
 :root {
-    --blue: #2D2D2D;
-    --blue-light: #45423F;
-    --blue-dark: #20201F;
-    --gold: #A99683;
-    --gold-light: #DED3C6;
-    --bg: #F4EFE7;
-    --bg-white: #FFFCF7;
-    --text: #2D2D2D;
-    --text-secondary: #625A52;
-    --text-light: #8A7F75;
+    /* Express Solution — official warm neutral palette */
+    --charcoal: #434242;
+    --charcoal-deep: #2D2D2D;
+    --warm-gray: #5D5A57;
+    --taupe: #948A85;
+    --beige-gray: #AAA39F;
+    --ivory: #EBE7E2;
+    --soft-gray: #C7C5C3;
+    --warm-white: #F7F3ED;
+
+    /* Compatibility aliases used by the existing site components. */
+    --blue: var(--charcoal);
+    --blue-light: var(--warm-gray);
+    --blue-dark: var(--charcoal-deep);
+    --gold: var(--taupe);
+    --gold-light: var(--beige-gray);
+    --bg: var(--ivory);
+    --bg-white: var(--warm-white);
+    --text: var(--charcoal-deep);
+    --text-secondary: var(--warm-gray);
+    --text-light: var(--beige-gray);
 }
