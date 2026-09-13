@@ -73,11 +73,13 @@ export function CartProvider({ children }) {
     return () => { active = false }
   }, [])
 
-  const addToCart = useCallback((productId = BOOK.id) => {
+  const addToCart = useCallback((requestedProductId = BOOK.id) => {
+    const productId = typeof requestedProductId === 'string' ? requestedProductId : BOOK.id
+    const product = catalog[productId]
+    if (!product || product.available === false) return
+
     setItems((previous) => {
       if (previous.some((item) => item.id === productId)) return previous
-      const product = catalog[productId]
-      if (!product || product.available === false) return previous
       return [...previous, { ...product, qty: 1 }]
     })
     setIsOpen(true)
