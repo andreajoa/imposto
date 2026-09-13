@@ -76,18 +76,6 @@
   color: var(--bo-ivory);
 }
 
-.bo-hero::after {
-  content: '';
-  position: absolute;
-  right: -80px;
-  bottom: -78px;
-  width: 330px;
-  height: 190px;
-  border-radius: 34px;
-  background: var(--bo-ivory);
-  opacity: .96;
-}
-
 .bo-hero-copy, .bo-hero-visual { position: relative; z-index: 3; }
 .bo-hero-copy { width: min(720px, 100%); justify-self: end; }
 
