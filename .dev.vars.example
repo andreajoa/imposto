@@ -7,13 +7,15 @@ RESEND_FROM=Express Solution <website@express-solution.com>
 CONTACT_TO=support@express-solution.com
 
 # Stripe embedded checkout
+# The code also accepts common aliases for the publishable key.
 STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxx
 STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxx
 SITE_URL=https://www.express-solution.com
 
-# One Stripe Price ID per guide. Product prices stay authoritative on Stripe.
-STRIPE_PRICE_GUIA_IMPOSTOS=price_xxxxxxxxxxxxxxxxxxxxx
-STRIPE_PRICE_ABERTURA_EMPRESA=price_xxxxxxxxxxxxxxxxxxxxx
+# OPTIONAL backward compatibility only.
+# The checkout now tries to resolve the active Stripe product/price automatically by product name/metadata.
+# STRIPE_PRICE_GUIA_IMPOSTOS=price_xxxxxxxxxxxxxxxxxxxxx
+# STRIPE_PRICE_ABERTURA_EMPRESA=price_xxxxxxxxxxxxxxxxxxxxx
 
 # Optional: when the second PDF is hosted at a stable URL, configure it here.
 DOWNLOAD_ABERTURA_EMPRESA_URL=/abertura-de-empresa-nos-eua.pdf
