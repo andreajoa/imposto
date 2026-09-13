@@ -1,5 +1,16 @@
 import { PRODUCT_DEFS, json, resolveStripePrice } from '../_lib/products.js'
 
+function normalizeEnv(source = {}) {
+  return {
+    ...source,
+    STRIPE_SECRET_KEY:
+      source.STRIPE_SECRET_KEY ||
+      source.STRIPE_SECRET ||
+      source.STRIPE_SK ||
+      '',
+  }
+}
+
 async function hydrateProduct(product, env) {
   try {
     const price = await resolveStripePrice(product, env)
@@ -50,7 +61,22 @@ async function hydrateProduct(product, env) {
   }
 }
 
+async function getCatalog(env) {
+  return Promise.all(Object.values(PRODUCT_DEFS).map((product) => hydrateProduct(product, env)))
+}
+
 export async function onRequestGet({ env }) {
-  const products = await Promise.all(Object.values(PRODUCT_DEFS).map((product) => hydrateProduct(product, env)))
+  const products = await getCatalog(normalizeEnv(env))
   return json({ products })
+}
+
+export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store')
+  if (req.method !== 'GET') {
+    res.setHeader('Allow', 'GET')
+    return res.status(405).json({ error: 'Método não permitido.' })
+  }
+
+  const products = await getCatalog(normalizeEnv(process.env))
+  return res.status(200).json({ products })
 }
