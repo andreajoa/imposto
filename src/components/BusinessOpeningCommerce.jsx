@@ -11,7 +11,7 @@ export default function BusinessOpeningCommerce() {
     <>
       <aside className="bo-commerce-bar" aria-label="Comprar Abertura de Empresa nos EUA">
         <div className="bo-commerce-product">
-          <img src={product?.image || '/image/book-cover-business.svg'} alt="" />
+          <img src={product?.image || '/image/business-opening-cover.png'} alt="" />
           <span>
             <small>Apostila digital</small>
             <strong>Abertura de Empresa nos EUA</strong>

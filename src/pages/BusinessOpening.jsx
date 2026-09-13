@@ -203,20 +203,14 @@ export default function BusinessOpening() {
 
           <div className="bo-hero-visual" aria-label="Capa da apostila Abertura de Empresa nos EUA">
             <div className="bo-book-stage">
-              <div className="bo-book-shadow" />
-              <article className="bo-book">
-                <div className="bo-book-spine" aria-hidden="true" />
-                <div className="bo-book-cover">
-                  <img className="bo-book-logo" src="/image/express-solution-logo.svg" alt="" />
-                  <div className="bo-book-title">Abertura de<br />Empresa nos EUA</div>
-                  <p>Estruturas, abertura e responsabilidades fiscais.</p>
-                  <div className="bo-book-photo-frame">
-                    <img src="/image/autora.png" alt="Kelly Moraes" />
-                  </div>
-                  <div className="bo-book-author">Kelly Moraes</div>
-                  <div className="bo-book-company">Express Solution Tax &amp; Accounting, Inc.</div>
-                </div>
-              </article>
+              <img
+                className="bo-official-cover"
+                src="/image/business-opening-cover.png"
+                width="447"
+                height="558"
+                alt="Abertura de Empresa nos EUA, por Kelly Moraes"
+                decoding="async"
+              />
             </div>
             <div className="bo-hero-note bo-hero-note--one"><strong>14</strong><span>capítulos objetivos</span></div>
             <div className="bo-hero-note bo-hero-note--two"><strong>+</strong><span>checklists e matriz de decisão</span></div>

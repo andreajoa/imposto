@@ -14,7 +14,7 @@
   display: block !important;
   overflow: visible !important;
   perspective: none !important;
-  background: url('/image/tax-guide-cover.webp') center / contain no-repeat !important;
+  background: none !important;
   transform: none !important;
   animation: none !important;
 }
@@ -27,7 +27,6 @@
 
 /* The old generated SVG remains in the markup only as a compatibility fallback.
    The official client-supplied cover above is the visible artwork. */
-.tax-guide-page .tg-book-premium,
 .tax-guide-page .tg-book-stage > .tg-book,
 .tax-guide-page .tg-book-stage > .tg-book-shadow {
   display: none !important;
@@ -50,7 +49,7 @@
   perspective: none !important;
   transform: none !important;
   animation: none !important;
-  background: url('/image/business-opening-cover.webp') center / contain no-repeat !important;
+  background: none !important;
 }
 
 .business-page .bo-book-stage::before,
@@ -103,4 +102,16 @@
   .business-page .bo-book-stage {
     width: min(340px, 90vw) !important;
   }
+}
+
+/* Render the original transparent artwork as accessible, uncropped images. */
+.tax-guide-page .tg-book-premium,
+.business-page .bo-official-cover {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  transform: none !important;
+  animation: none !important;
 }

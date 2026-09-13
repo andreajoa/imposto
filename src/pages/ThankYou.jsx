@@ -129,7 +129,7 @@ export default function ThankYou() {
           </div>
 
           <div className="thankyou-book-area">
-            <img src={products[0]?.image || '/image/book-cover-cart.svg'} alt={products[0]?.title || 'Apostila Express Solution'} className="thankyou-book-img" />
+            <img src={products[0]?.image || '/image/tax-guide-cover.png'} alt={products[0]?.title || 'Apostila Express Solution'} className="thankyou-book-img" />
           </div>
         </div>
       </section>
