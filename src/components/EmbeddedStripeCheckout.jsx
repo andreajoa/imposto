@@ -8,7 +8,7 @@ function loadStripeScript() {
 
   stripeScriptPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script')
-    script.src = 'https://js.stripe.com/dahlia/stripe.js'
+    script.src = 'https://js.stripe.com/v3/'
     script.async = true
     script.onload = () => window.Stripe ? resolve(window.Stripe) : reject(new Error('Stripe.js não carregou corretamente.'))
     script.onerror = () => reject(new Error('Não foi possível carregar o checkout seguro do Stripe.'))
@@ -25,9 +25,6 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
 
   const productIds = useMemo(() => items.map((item) => item.id).sort(), [items])
   const productKey = productIds.join('|')
-  const legacyFallback = productIds.length === 1 && productIds[0] === 'guia-impostos'
-    ? 'https://buy.stripe.com/dRm28s83jeEZaZK5VMaVa01'
-    : ''
 
   useEffect(() => {
     let active = true
@@ -47,22 +44,20 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
         if (!active) return
 
         const stripe = Stripe(config.publishableKey)
-        const fetchClientSecret = async () => {
-          const response = await fetch('/api/checkout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({ productIds }),
-          })
-          const payload = await response.json().catch(() => ({}))
-          if (!response.ok || !payload.clientSecret) {
-            throw new Error(payload.error || 'Não foi possível iniciar o pagamento.')
-          }
-          return payload.clientSecret
-        }
-
-        const checkout = stripe.createEmbeddedCheckoutPage
-          ? await stripe.createEmbeddedCheckoutPage({ fetchClientSecret })
-          : await stripe.initEmbeddedCheckout({ fetchClientSecret })
+        const checkout = await stripe.initEmbeddedCheckout({
+          fetchClientSecret: async () => {
+            const response = await fetch('/api/checkout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+              body: JSON.stringify({ productIds }),
+            })
+            const payload = await response.json().catch(() => ({}))
+            if (!response.ok || !payload.clientSecret) {
+              throw new Error(payload.error || 'Não foi possível iniciar o pagamento.')
+            }
+            return payload.clientSecret
+          },
+        })
 
         if (!active) {
           checkout.destroy?.()
@@ -103,12 +98,9 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
 
       {state.status === 'error' && (
         <div className="embedded-stripe-state embedded-stripe-state--error" role="alert">
-          <strong>Checkout embutido em configuração</strong>
+          <strong>Checkout indisponível</strong>
           <p>{state.message}</p>
-          {legacyFallback && (
-            <a className="embedded-stripe-fallback" href={legacyFallback}>Continuar no checkout seguro do Stripe</a>
-          )}
-          <small>O fallback acima existe apenas para evitar interrupção das vendas durante a migração.</small>
+          <small>Se o problema persistir, escreva para support@express-solution.com.</small>
         </div>
       )}
 
