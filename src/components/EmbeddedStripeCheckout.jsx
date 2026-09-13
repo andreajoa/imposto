@@ -25,6 +25,9 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
 
   const productIds = useMemo(() => items.map((item) => item.id).sort(), [items])
   const productKey = productIds.join('|')
+  const legacyFallback = productIds.length === 1 && productIds[0] === 'guia-impostos'
+    ? 'https://buy.stripe.com/dRm28s83jeEZaZK5VMaVa01'
+    : ''
 
   useEffect(() => {
     let active = true
@@ -100,9 +103,12 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
 
       {state.status === 'error' && (
         <div className="embedded-stripe-state embedded-stripe-state--error" role="alert">
-          <strong>Checkout indisponível</strong>
+          <strong>Checkout embutido em configuração</strong>
           <p>{state.message}</p>
-          <small>Se o problema persistir, escreva para support@express-solution.com.</small>
+          {legacyFallback && (
+            <a className="embedded-stripe-fallback" href={legacyFallback}>Continuar no checkout seguro do Stripe</a>
+          )}
+          <small>O fallback acima existe apenas para evitar interrupção das vendas durante a migração.</small>
         </div>
       )}
 
