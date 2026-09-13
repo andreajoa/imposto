@@ -1,0 +1,88 @@
+/*
+ * Express Solution brand palette override.
+ * Reference: charcoal + warm ivory + taupe creative supplied by the client.
+ * Intentionally contains no blue hue.
+ */
+
+:root {
+  color-scheme: light;
+}
+
+.business-page {
+  --bo-charcoal: #434242;
+  --bo-charcoal-2: #2D2D2D;
+  --bo-charcoal-3: #5D5A57;
+  --bo-ink: #2D2D2D;
+  --bo-ivory: #EBE7E2;
+  --bo-beige: #AAA39F;
+  --bo-taupe: #948A85;
+  --bo-muted: #C7C5C3;
+  --bo-line: rgba(235, 231, 226, 0.20);
+}
+
+/* Main editorial surfaces */
+.business-page .bo-hero {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(148, 138, 133, 0.20), transparent 27%),
+    linear-gradient(135deg, #2D2D2D 0%, #434242 58%, #2D2D2D 100%);
+}
+
+.business-page .bo-book-cover {
+  background: #434242;
+}
+
+.business-page .bo-book-spine {
+  background: linear-gradient(90deg, #2D2D2D, #5D5A57);
+}
+
+.business-page .bo-structure-section {
+  background: #EBE7E2;
+}
+
+.business-page .bo-stack-card--1 {
+  background: linear-gradient(145deg, #434242, #2D2D2D);
+}
+
+.business-page .bo-stack-card--2 {
+  background: linear-gradient(145deg, #5D5A57, #2D2D2D);
+}
+
+.business-page .bo-stack-card--3 {
+  background: linear-gradient(145deg, #434242, #2D2D2D);
+}
+
+.business-page .bo-fill .bo-section-index,
+.business-page .bo-section-head .bo-section-index,
+.business-page .bo-section-head h2 em {
+  color: #948A85;
+}
+
+.business-page .bo-fill-note,
+.business-page .bo-section-head > p {
+  color: #5D5A57;
+}
+
+/* Shared site controls keep the same brand language. */
+.btn-primary,
+.cart-checkout-btn,
+.thankyou-download-button {
+  background: #434242;
+  color: #F7F3ED;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.cart-checkout-btn:hover,
+.cart-checkout-btn:focus-visible,
+.thankyou-download-button:hover,
+.thankyou-download-button:focus-visible {
+  background: #2D2D2D;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-color: #948A85;
+}
