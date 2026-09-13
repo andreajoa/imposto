@@ -2,7 +2,7 @@ export default function ThankYou() {
   const handleDownload = () => {
     const link = document.createElement('a')
     link.href = '/guia-impostos-imigrantes-eua-padded.pdf'
-    link.download = 'Guia-Completo-Impostos-Imigrantes-EUA-Kelly-Marques.pdf'
+    link.download = 'Guia-Completo-Impostos-Imigrantes-EUA-Kelly-Moraes.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -11,7 +11,7 @@ export default function ThankYou() {
   return (
     <div className="thankyou-premium-page">
       <header className="thankyou-nav">
-        <a href="/" className="thankyou-logo">Impostos<span>USA</span></a>
+        <a href="/" className="thankyou-logo">Express<span>Solution</span></a>
         <div className="thankyou-nav-links">
           <a href="/">Página inicial</a>
           <a href="/#conteudo">Conteúdo</a>
@@ -64,13 +64,8 @@ export default function ThankYou() {
 
           <div className="thankyou-secondary-actions">
             <a href="/" className="thankyou-outline-button">📄 Voltar para o site</a>
-            <a
-              href="https://wa.me/18572443842?text=Ol%C3%A1%20Kelly!%20Acabei%20de%20comprar%20o%20guia%20e%20preciso%20de%20ajuda."
-              className="thankyou-outline-button"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              💬 Falar com Kelly no WhatsApp
+            <a href="mailto:support@express-solution.com" className="thankyou-outline-button">
+              ✉️ Falar com a Express Solution
             </a>
           </div>
         </section>
@@ -100,52 +95,36 @@ export default function ThankYou() {
               <div className="thankyou-step-number">3</div>
               <div className="thankyou-step-icon">📖</div>
               <h3>Comece pelos primeiros capítulos</h3>
-              <p>Siga a ordem sugerida e aplique as ferramentas para evitar erros e pagar menos impostos.</p>
+              <p>Siga a ordem sugerida e aplique as ferramentas para reduzir erros de organização fiscal.</p>
             </div>
           </div>
         </section>
 
         <section className="thankyou-trust-strip">
-          <div>
-            <strong>🛡️ Compra 100% segura</strong>
-            <span>Pagamento processado por plataforma segura.</span>
-          </div>
-          <div>
-            <strong>🔓 Acesso imediato</strong>
-            <span>Download disponível logo após a confirmação.</span>
-          </div>
-          <div>
-            <strong>✅ Conteúdo confiável</strong>
-            <span>Informações práticas para brasileiros nos EUA.</span>
-          </div>
-          <div>
-            <strong>🎧 Suporte dedicado</strong>
-            <span>Conte comigo para te ajudar sempre que precisar.</span>
-          </div>
+          <div><strong>🛡️ Compra segura</strong><span>Pagamento processado por plataforma segura.</span></div>
+          <div><strong>🔓 Acesso imediato</strong><span>Download disponível logo após a confirmação.</span></div>
+          <div><strong>✅ Conteúdo em português</strong><span>Informações práticas para brasileiros nos EUA.</span></div>
+          <div><strong>✉️ Suporte</strong><span>Contato direto com a Express Solution.</span></div>
         </section>
 
         <section className="thankyou-author-support">
           <div className="thankyou-author-box">
-            <img src="/image/autora.png" alt="Kelly Marques" />
+            <img src="/image/autora.png" alt="Kelly Moraes" />
             <div>
               <span>Conheça a autora</span>
-              <h2>Kelly Marques</h2>
-              <strong>Preparadora de Impostos</strong>
+              <h2>Kelly Moraes</h2>
+              <strong>Express Solution Tax &amp; Accounting, Inc.</strong>
               <p>
-                Com anos de experiência atendendo famílias imigrantes nos Estados Unidos, Kelly entende as dificuldades de quem chega e precisa entender o sistema tributário americano.
+                Kelly produz conteúdos em português para ajudar brasileiros nos Estados Unidos a compreender melhor sua organização tributária e financeira.
               </p>
             </div>
           </div>
 
           <div className="thankyou-help-box">
             <span>Precisa de ajuda?</span>
-            <h3>Estou aqui para te apoiar.</h3>
-            <a href="https://wa.me/18572443842" target="_blank" rel="noopener noreferrer">
-              WhatsApp: (857) 244-3842
-            </a>
-            <a href="mailto:expressinc1040@gmail.com">
-              expressinc1040@gmail.com
-            </a>
+            <h3>A equipe da Express Solution está à disposição.</h3>
+            <a href="tel:+18572443842">+1 (857) 244-3842</a>
+            <a href="mailto:support@express-solution.com">support@express-solution.com</a>
             <p>Atendimento em português para brasileiros nos EUA.</p>
           </div>
         </section>
@@ -153,13 +132,13 @@ export default function ThankYou() {
         <section className="thankyou-final-message">
           <div>♡</div>
           <h2>Obrigada pela sua confiança!</h2>
-          <p>Estou muito feliz em fazer parte da sua jornada financeira aqui nos EUA.</p>
+          <p>Esperamos que o material torne sua jornada mais clara e organizada.</p>
         </section>
       </main>
 
       <footer className="thankyou-premium-footer">
-        <p>© Kelly Marques — Preparadora de Impostos. Todos os direitos reservados.</p>
-        <p>Este material não substitui aconselhamento jurídico ou financeiro. Consulte um CPA para orientação específica.</p>
+        <p>© Kelly Moraes — Express Solution Tax &amp; Accounting, Inc. Todos os direitos reservados.</p>
+        <p>Este material é educacional e não substitui aconselhamento tributário, jurídico, migratório ou financeiro individualizado.</p>
       </footer>
     </div>
   )
