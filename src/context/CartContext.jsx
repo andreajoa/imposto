@@ -11,7 +11,7 @@ export const PRODUCTS = {
     authorRole: 'Express Solution Tax & Accounting, Inc.',
     price: 24.99,
     originalPrice: null,
-    image: '/image/tax-guide-3d.svg',
+    image: '/image/tax-guide-cover.png',
     route: '/',
     description: 'Material digital em português • PDF • Acesso após confirmação',
     available: true,
@@ -26,7 +26,7 @@ export const PRODUCTS = {
     authorRole: 'Express Solution Tax & Accounting, Inc.',
     price: null,
     originalPrice: null,
-    image: '/image/book-cover-business.svg',
+    image: '/image/business-opening-cover.png',
     route: '/abertura-de-empresa-nos-eua',
     description: 'Guia profissional sobre estruturas, abertura e responsabilidades fiscais',
     available: false,
@@ -39,6 +39,7 @@ export const BOOK = PRODUCTS['guia-impostos']
 
 export function CartProvider({ children }) {
   const [catalog, setCatalog] = useState(PRODUCTS)
+  const [catalogStatus, setCatalogStatus] = useState('loading')
   const [items, setItems] = useState([])
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
 
@@ -47,7 +48,9 @@ export function CartProvider({ children }) {
     fetch('/api/catalog', { headers: { Accept: 'application/json' }, cache: 'no-store' })
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('catalog unavailable')))
       .then((payload) => {
-        if (!active || !payload?.products) return
+        if (!active) return
+        if (!Array.isArray(payload?.products)) throw new Error('Catálogo inválido')
+        setCatalogStatus('ready')
         setCatalog((current) => {
           const next = { ...current }
           for (const remote of payload.products) {
@@ -57,13 +60,13 @@ export function CartProvider({ children }) {
               ...base,
               ...remote,
               price: typeof remote.price === 'number' ? remote.price : base.price,
-              available: remote.configured ? Boolean(remote.available) : base.available,
+              available: Boolean(remote.configured && remote.available),
             }
           }
           return next
         })
       })
-      .catch(() => {})
+      .catch(() => { if (active) setCatalogStatus('error') })
     return () => { active = false }
   }, [])
 
@@ -107,6 +110,7 @@ export function CartProvider({ children }) {
 
   const value = useMemo(() => ({
     catalog,
+    catalogStatus,
     items,
     isOpen,
     isCheckoutOpen,
@@ -119,7 +123,7 @@ export function CartProvider({ children }) {
     closeCart,
     openCheckout,
     closeCheckout,
-  }), [catalog, items, isCheckoutOpen, total, addToCart, buyNow, removeFromCart, clearCart, toggleCart, closeCart, openCheckout, closeCheckout])
+  }), [catalog, catalogStatus, items, isCheckoutOpen, total, addToCart, buyNow, removeFromCart, clearCart, toggleCart, closeCart, openCheckout, closeCheckout])
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }

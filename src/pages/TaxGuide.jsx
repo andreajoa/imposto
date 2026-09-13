@@ -65,7 +65,7 @@ function GuideBookMockup({ compact = false }) {
     <div className={`tg-book-stage${compact ? ' tg-book-stage--compact' : ''}`}>
       <img
         className="tg-book-premium"
-        src="/image/tax-guide-3d.svg"
+        src="/image/tax-guide-cover.png"
         alt="Guia Completo de Impostos para Imigrantes nos EUA, por Kelly Moraes"
         loading={compact ? 'lazy' : 'eager'}
         decoding="async"

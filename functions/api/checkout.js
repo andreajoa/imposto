@@ -13,13 +13,19 @@ function normalizeEnv(source = {}) {
 
 async function createCheckout(body, env, origin) {
   const productIds = normalizeProductIds(body?.productIds)
-  if (!productIds.length) return { status: 400, data: { error: 'Selecione pelo menos um produto.' } }
+  if (!Array.isArray(body?.productIds) || body.productIds.some((id) => !Object.hasOwn(PRODUCT_DEFS, id)) || !productIds.length) return { status: 400, data: { error: 'Selecione pelo menos um produto.' } }
   if (!env.STRIPE_SECRET_KEY) return { status: 503, data: { error: 'Checkout não configurado.' } }
 
   const resolved = []
   for (const productId of productIds) {
     const product = PRODUCT_DEFS[productId]
-    const price = await resolveStripePrice(product, env)
+    let price
+    try {
+      price = await resolveStripePrice(product, env)
+    } catch (error) {
+      console.error('Stripe price lookup failed', productId, error.message)
+      return { status: 502, data: { error: 'Não foi possível consultar o preço. Tente novamente em instantes.' } }
+    }
     if (!price) {
       return {
         status: 409,
@@ -63,7 +69,7 @@ async function createCheckout(body, env, origin) {
     return { status: 200, data: { clientSecret: session.client_secret } }
   } catch (error) {
     console.error('Stripe checkout error', error.message)
-    return { status: 502, data: { error: error.message || 'Não foi possível iniciar o pagamento agora.' } }
+    return { status: 502, data: { error: 'Não foi possível iniciar o pagamento agora. Tente novamente em instantes.' } }
   }
 }
 

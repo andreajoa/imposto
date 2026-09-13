@@ -15,6 +15,10 @@ function loadStripeScript() {
     document.head.appendChild(script)
   })
 
+  stripeScriptPromise = stripeScriptPromise.catch((error) => {
+    stripeScriptPromise = null
+    throw error
+  })
   return stripeScriptPromise
 }
 
@@ -40,6 +44,7 @@ async function resolvePublishableKey() {
 }
 
 export default function EmbeddedStripeCheckout({ items, onReady }) {
+  const [attempt, setAttempt] = useState(0)
   const mountRef = useRef(null)
   const checkoutRef = useRef(null)
   const [state, setState] = useState({ status: 'loading', message: 'Preparando seu checkout seguro…' })
@@ -102,7 +107,7 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
       checkoutRef.current = null
       if (mountRef.current) mountRef.current.innerHTML = ''
     }
-  }, [productKey])
+  }, [productKey, attempt])
 
   return (
     <div className="embedded-stripe-shell">
@@ -117,7 +122,8 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
         <div className="embedded-stripe-state embedded-stripe-state--error" role="alert">
           <strong>Não foi possível abrir o pagamento</strong>
           <p>{state.message}</p>
-          <small>O problema é de configuração do checkout, não da sua compra. Suporte: support@express-solution.com</small>
+          <button type="button" onClick={() => setAttempt((value) => value + 1)}>Tentar novamente</button>
+          <small>Precisa de ajuda? support@express-solution.com</small>
         </div>
       )}
 

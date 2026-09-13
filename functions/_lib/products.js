@@ -12,7 +12,7 @@ export const PRODUCT_DEFS = {
     fallbackUnitAmount: 2499,
     currency: 'usd',
     route: '/',
-    image: '/image/tax-guide-3d.svg',
+    image: '/image/tax-guide-cover.png',
     downloadUrl: '/guia-impostos-imigrantes-eua-padded.pdf',
     orderBumpIds: ['abertura-empresa'],
     crossSellIds: ['abertura-empresa'],
@@ -25,7 +25,7 @@ export const PRODUCT_DEFS = {
     stripeNames: ['Abertura de Empresa nos EUA'],
     currency: 'usd',
     route: '/abertura-de-empresa-nos-eua',
-    image: '/image/book-cover-business.svg',
+    image: '/image/business-opening-cover.png',
     downloadUrlEnv: 'DOWNLOAD_ABERTURA_EMPRESA_URL',
     orderBumpIds: ['guia-impostos'],
     crossSellIds: ['guia-impostos'],
@@ -44,16 +44,19 @@ export function getPriceId(product, env) {
   return product?.priceEnv ? env[product.priceEnv] || '' : ''
 }
 
+function usablePrice(price, product) {
+  return price?.active === true && price.type === 'one_time' &&
+    Number.isInteger(price.unit_amount) && price.unit_amount > 0 &&
+    price.currency === product.currency && price.product?.active !== false
+}
+
 export async function resolveStripePrice(product, env) {
   if (!product) return null
 
   const explicitPriceId = getPriceId(product, env)
   if (explicitPriceId) {
-    try {
-      return await stripeRequest(env, `/v1/prices/${encodeURIComponent(explicitPriceId)}?expand[]=product`)
-    } catch (error) {
-      console.error('Explicit Stripe price lookup failed', product.id, error.message)
-    }
+    const price = await stripeRequest(env, `/v1/prices/${encodeURIComponent(explicitPriceId)}?expand[]=product`)
+    return usablePrice(price, product) ? price : null
   }
 
   try {
@@ -68,7 +71,7 @@ export async function resolveStripePrice(product, env) {
     if (stripeProduct) {
       if (stripeProduct.default_price && typeof stripeProduct.default_price === 'object') {
         const defaultPrice = stripeProduct.default_price
-        if (defaultPrice.active !== false && typeof defaultPrice.unit_amount === 'number') return defaultPrice
+        if (usablePrice(defaultPrice, product)) return defaultPrice
       }
 
       const productId = stripeProduct.id
@@ -77,12 +80,12 @@ export async function resolveStripePrice(product, env) {
           env,
           `/v1/prices?active=true&limit=20&type=one_time&product=${encodeURIComponent(productId)}`
         )
-        const price = (prices.data || []).find((candidate) => typeof candidate.unit_amount === 'number')
+        const price = (prices.data || []).find((candidate) => usablePrice(candidate, product))
         if (price) return price
       }
     }
   } catch (error) {
-    console.error('Stripe product auto-resolution failed', product.id, error.message)
+    throw error
   }
 
   if (Number.isInteger(product.fallbackUnitAmount) && product.fallbackUnitAmount > 0) {
