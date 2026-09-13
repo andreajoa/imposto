@@ -18,6 +18,27 @@ function loadStripeScript() {
   return stripeScriptPromise
 }
 
+async function resolvePublishableKey() {
+  const buildKey =
+    import.meta.env?.VITE_STRIPE_PUBLISHABLE_KEY ||
+    import.meta.env?.VITE_STRIPE_PUBLIC_KEY ||
+    ''
+
+  try {
+    const response = await fetch('/api/stripe-config', {
+      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+    })
+    const payload = await response.json().catch(() => ({}))
+    if (response.ok && payload.publishableKey) return payload.publishableKey
+    if (buildKey) return buildKey
+    throw new Error(payload.error || 'A chave pública do Stripe não foi encontrada no ambiente de produção.')
+  } catch (error) {
+    if (buildKey) return buildKey
+    throw error
+  }
+}
+
 export default function EmbeddedStripeCheckout({ items, onReady }) {
   const mountRef = useRef(null)
   const checkoutRef = useRef(null)
@@ -34,22 +55,18 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
       setState({ status: 'loading', message: 'Preparando seu checkout seguro…' })
 
       try {
-        const configResponse = await fetch('/api/stripe-config', { headers: { Accept: 'application/json' } })
-        const config = await configResponse.json().catch(() => ({}))
-        if (!configResponse.ok || !config.publishableKey) {
-          throw new Error(config.error || 'O checkout ainda não foi configurado para pagamentos embutidos.')
-        }
-
+        const publishableKey = await resolvePublishableKey()
         const Stripe = await loadStripeScript()
         if (!active) return
 
-        const stripe = Stripe(config.publishableKey)
+        const stripe = Stripe(publishableKey)
         const checkout = await stripe.initEmbeddedCheckout({
           fetchClientSecret: async () => {
             const response = await fetch('/api/checkout', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
               body: JSON.stringify({ productIds }),
+              cache: 'no-store',
             })
             const payload = await response.json().catch(() => ({}))
             if (!response.ok || !payload.clientSecret) {
@@ -98,9 +115,9 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
 
       {state.status === 'error' && (
         <div className="embedded-stripe-state embedded-stripe-state--error" role="alert">
-          <strong>Checkout indisponível</strong>
+          <strong>Não foi possível abrir o pagamento</strong>
           <p>{state.message}</p>
-          <small>Se o problema persistir, escreva para support@express-solution.com.</small>
+          <small>O problema é de configuração do checkout, não da sua compra. Suporte: support@express-solution.com</small>
         </div>
       )}
 
