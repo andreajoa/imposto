@@ -11,7 +11,7 @@ export const PRODUCTS = {
     authorRole: 'Express Solution Tax & Accounting, Inc.',
     price: 24.99,
     originalPrice: null,
-    image: '/image/book-cover-cart.svg',
+    image: '/image/tax-guide-3d.svg',
     route: '/',
     description: 'Material digital em português • PDF • Acesso após confirmação',
     available: true,
@@ -45,12 +45,10 @@ export function CartProvider({ children }) {
 
   useEffect(() => {
     let active = true
-
     fetch('/api/catalog', { headers: { Accept: 'application/json' } })
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('catalog unavailable')))
       .then((payload) => {
         if (!active || !payload?.products) return
-
         setCatalog((current) => {
           const next = { ...current }
           for (const remote of payload.products) {
@@ -66,10 +64,7 @@ export function CartProvider({ children }) {
           return next
         })
       })
-      .catch(() => {
-        // Static catalog remains usable if the Stripe catalog endpoint is not configured yet.
-      })
-
+      .catch(() => {})
     return () => { active = false }
   }, [])
 
@@ -77,46 +72,34 @@ export function CartProvider({ children }) {
     const productId = typeof requestedProductId === 'string' ? requestedProductId : BOOK.id
     const product = catalog[productId]
     if (!product || product.available === false) return
-
-    setItems((previous) => {
-      if (previous.some((item) => item.id === productId)) return previous
-      return [...previous, { ...product, qty: 1 }]
-    })
+    setItems((previous) => previous.some((item) => item.id === productId) ? previous : [...previous, { ...product, qty: 1 }])
     setIsOpen(true)
+  }, [catalog])
+
+  const buyNow = useCallback((requestedProductId = BOOK.id) => {
+    const productId = typeof requestedProductId === 'string' ? requestedProductId : BOOK.id
+    const product = catalog[productId]
+    if (!product || product.available === false || typeof product.price !== 'number') return
+    setItems([{ ...product, qty: 1 }])
+    setIsOpen(false)
+    setIsCheckoutOpen(true)
   }, [catalog])
 
   const removeFromCart = useCallback((productId) => {
     setItems((previous) => productId ? previous.filter((item) => item.id !== productId) : [])
   }, [])
-
   const clearCart = useCallback(() => setItems([]), [])
   const toggleCart = useCallback(() => setIsOpen((previous) => !previous), [])
   const closeCart = useCallback(() => setIsOpen(false), [])
-  const openCheckout = useCallback(() => {
-    setIsOpen(false)
-    setIsCheckoutOpen(true)
-  }, [])
+  const openCheckout = useCallback(() => { setIsOpen(false); setIsCheckoutOpen(true) }, [])
   const closeCheckout = useCallback(() => setIsCheckoutOpen(false), [])
 
-  const total = useMemo(
-    () => items.reduce((sum, item) => sum + (Number(item.price) || 0) * item.qty, 0),
-    [items]
-  )
+  const total = useMemo(() => items.reduce((sum, item) => sum + (Number(item.price) || 0) * item.qty, 0), [items])
 
   const value = useMemo(() => ({
-    catalog,
-    items,
-    isOpen,
-    isCheckoutOpen,
-    total,
-    addToCart,
-    removeFromCart,
-    clearCart,
-    toggleCart,
-    closeCart,
-    openCheckout,
-    closeCheckout,
-  }), [catalog, items, isOpen, isCheckoutOpen, total, addToCart, removeFromCart, clearCart, toggleCart, closeCart, openCheckout, closeCheckout])
+    catalog, items, isOpen, isCheckoutOpen, total,
+    addToCart, buyNow, removeFromCart, clearCart, toggleCart, closeCart, openCheckout, closeCheckout,
+  }), [catalog, items, isOpen, isCheckoutOpen, total, addToCart, buyNow, removeFromCart, clearCart, toggleCart, closeCart, openCheckout, closeCheckout])
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
