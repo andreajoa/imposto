@@ -3,9 +3,16 @@ export const PRODUCT_DEFS = {
     id: 'guia-impostos',
     title: 'Guia Completo de Impostos para Imigrantes nos EUA',
     shortTitle: 'Guia de Impostos',
-    priceEnv: 'STRIPE_PRICE_GUIA_IMPOSTOS',
+    priceEnv: 'STRIPE_PRICE_GUIA_IMPOSTOS', // optional backward compatibility only
+    stripeNames: [
+      'Guia Completo de Impostos para Imigrantes nos EUA',
+      'Guia de Impostos',
+      'Guia Completo de Impostos',
+    ],
+    fallbackUnitAmount: 2499,
+    currency: 'usd',
     route: '/',
-    image: '/image/book-cover-cart.svg',
+    image: '/image/tax-guide-3d.svg',
     downloadUrl: '/guia-impostos-imigrantes-eua-padded.pdf',
     orderBumpIds: ['abertura-empresa'],
     crossSellIds: ['abertura-empresa'],
@@ -14,7 +21,9 @@ export const PRODUCT_DEFS = {
     id: 'abertura-empresa',
     title: 'Abertura de Empresa nos EUA',
     shortTitle: 'Abertura de Empresa nos EUA',
-    priceEnv: 'STRIPE_PRICE_ABERTURA_EMPRESA',
+    priceEnv: 'STRIPE_PRICE_ABERTURA_EMPRESA', // optional backward compatibility only
+    stripeNames: ['Abertura de Empresa nos EUA'],
+    currency: 'usd',
     route: '/abertura-de-empresa-nos-eua',
     image: '/image/book-cover-business.svg',
     downloadUrlEnv: 'DOWNLOAD_ABERTURA_EMPRESA_URL',
@@ -23,8 +32,70 @@ export const PRODUCT_DEFS = {
   },
 }
 
+function normalizeName(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase()
+}
+
 export function getPriceId(product, env) {
   return product?.priceEnv ? env[product.priceEnv] || '' : ''
+}
+
+export async function resolveStripePrice(product, env) {
+  if (!product) return null
+
+  const explicitPriceId = getPriceId(product, env)
+  if (explicitPriceId) {
+    try {
+      return await stripeRequest(env, `/v1/prices/${encodeURIComponent(explicitPriceId)}?expand[]=product`)
+    } catch (error) {
+      console.error('Explicit Stripe price lookup failed', product.id, error.message)
+    }
+  }
+
+  try {
+    const payload = await stripeRequest(env, '/v1/products?active=true&limit=100&expand[]=data.default_price')
+    const acceptedNames = new Set((product.stripeNames || [product.title]).map(normalizeName))
+    const stripeProduct = (payload.data || []).find((candidate) => {
+      const catalogId = String(candidate?.metadata?.catalog_id || candidate?.metadata?.catalogId || '').trim()
+      if (catalogId && catalogId === product.id) return true
+      return acceptedNames.has(normalizeName(candidate?.name))
+    })
+
+    if (stripeProduct) {
+      if (stripeProduct.default_price && typeof stripeProduct.default_price === 'object') {
+        const defaultPrice = stripeProduct.default_price
+        if (defaultPrice.active !== false && typeof defaultPrice.unit_amount === 'number') return defaultPrice
+      }
+
+      const productId = stripeProduct.id
+      if (productId) {
+        const prices = await stripeRequest(
+          env,
+          `/v1/prices?active=true&limit=20&type=one_time&product=${encodeURIComponent(productId)}`
+        )
+        const price = (prices.data || []).find((candidate) => typeof candidate.unit_amount === 'number')
+        if (price) return price
+      }
+    }
+  } catch (error) {
+    console.error('Stripe product auto-resolution failed', product.id, error.message)
+  }
+
+  if (Number.isInteger(product.fallbackUnitAmount) && product.fallbackUnitAmount > 0) {
+    return {
+      id: '',
+      active: true,
+      currency: product.currency || 'usd',
+      unit_amount: product.fallbackUnitAmount,
+      synthetic: true,
+    }
+  }
+
+  return null
 }
 
 export function getDownloadUrl(product, env) {
