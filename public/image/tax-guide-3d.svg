@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 1320" role="img" aria-labelledby="title desc">
+  <title id="title">Guia Completo de Impostos para Imigrantes nos EUA — mockup 3D</title>
+  <desc id="desc">Capa premium em grafite, bege e marfim da Express Solution, por Kelly Moraes.</desc>
+  <defs>
+    <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#464443"/>
+      <stop offset=".55" stop-color="#343332"/>
+      <stop offset="1" stop-color="#242423"/>
+    </linearGradient>
+    <linearGradient id="spine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#171716"/>
+      <stop offset=".5" stop-color="#31302f"/>
+      <stop offset="1" stop-color="#181817"/>
+    </linearGradient>
+    <linearGradient id="pages" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f7f3ed"/>
+      <stop offset=".6" stop-color="#e9e1d7"/>
+      <stop offset="1" stop-color="#cfc4b8"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8c3aa"/>
+      <stop offset=".5" stop-color="#a99683"/>
+      <stop offset="1" stop-color="#eee4d9"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-25%" width="180%" height="190%">
+      <feDropShadow dx="28" dy="34" stdDeviation="28" flood-color="#000" flood-opacity=".34"/>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <clipPath id="portraitClip"><rect x="585" y="662" width="220" height="292" rx="28"/></clipPath>
+  </defs>
+
+  <ellipse cx="515" cy="1190" rx="335" ry="52" fill="#000" opacity=".2" filter="url(#soft)"/>
+
+  <g filter="url(#shadow)" transform="rotate(-1.2 500 650)">
+    <!-- page block and top edge -->
+    <path d="M216 79 L858 102 L907 74 L272 50 Z" fill="url(#pages)"/>
+    <path d="M855 102 L906 74 L905 1117 L855 1144 Z" fill="url(#pages)"/>
+    <path d="M858 1115 L905 1088 L905 1117 L855 1144 Z" fill="#b8aa9c" opacity=".78"/>
+
+    <!-- back/spine -->
+    <path d="M124 104 Q132 73 168 68 L231 78 L231 1143 L164 1154 Q130 1155 123 1117 Z" fill="url(#spine)"/>
+    <path d="M169 68 Q190 61 231 78 L231 1143 Q192 1155 164 1154 Q187 1139 188 1102 L188 123 Q187 86 169 68Z" fill="#111" opacity=".32"/>
+
+    <!-- front cover -->
+    <rect x="207" y="78" width="652" height="1066" rx="18" fill="url(#cover)" stroke="#5c5956" stroke-width="2"/>
+    <rect x="219" y="90" width="628" height="1042" rx="14" fill="none" stroke="#fff" stroke-opacity=".045"/>
+
+    <!-- subtle watermark -->
+    <text x="648" y="392" fill="#f7f3ed" opacity=".035" font-family="Georgia,serif" font-weight="700" font-size="184">USA</text>
+    <path d="M722 336 l15 31 34 5-25 24 6 34-30-16-30 16 6-34-25-24 34-5z" fill="#f7f3ed" opacity=".035"/>
+
+    <!-- brand -->
+    <g text-anchor="middle">
+      <path d="M394 135 H684 M418 151 H660" stroke="#f7f3ed" stroke-width="3" opacity=".95"/>
+      <text x="540" y="211" fill="#f7f3ed" font-family="Georgia,serif" font-style="italic" font-size="60">Express Solution</text>
+      <path d="M433 231 H647 M450 247 H630" stroke="#ebe7e2" stroke-width="2" opacity=".85"/>
+      <text x="540" y="276" fill="#ebe7e2" font-family="Arial,sans-serif" font-size="17" letter-spacing="2.5">TAX &amp; ACCOUNTING, INC.</text>
+    </g>
+
+    <!-- title -->
+    <text x="272" y="380" fill="#f7f3ed" font-family="Georgia,serif" font-size="61" font-weight="700">
+      <tspan x="272" dy="0">Guia Completo de</tspan>
+      <tspan x="272" dy="70">Impostos para</tspan>
+      <tspan x="272" dy="70">Imigrantes nos EUA</tspan>
+    </text>
+    <rect x="273" y="585" width="88" height="7" rx="3.5" fill="url(#gold)"/>
+    <text x="274" y="635" fill="#ebe7e2" font-family="Arial,sans-serif" font-size="22">
+      <tspan x="274" dy="0">Entenda o sistema, evite erros, aumente seu reembolso</tspan>
+      <tspan x="274" dy="32">e organize sua vida financeira com segurança.</tspan>
+    </text>
+
+    <!-- feature stack -->
+    <g font-family="Arial,sans-serif">
+      <g transform="translate(278 735)">
+        <circle cx="33" cy="33" r="33" fill="#ded3c6"/><text x="33" y="42" text-anchor="middle" fill="#343332" font-size="26" font-weight="700">01</text>
+        <text x="83" y="27" fill="#f7f3ed" font-size="19" font-weight="700" letter-spacing="1.1">PASSO A PASSO</text><text x="83" y="52" fill="#c7c5c3" font-size="16">simplificado e direto</text>
+      </g>
+      <g transform="translate(278 825)">
+        <circle cx="33" cy="33" r="33" fill="#ded3c6"/><text x="33" y="42" text-anchor="middle" fill="#343332" font-size="26" font-weight="700">02</text>
+        <text x="83" y="27" fill="#f7f3ed" font-size="19" font-weight="700" letter-spacing="1.1">DICAS PRÁTICAS</text><text x="83" y="52" fill="#c7c5c3" font-size="16">e estratégias de organização</text>
+      </g>
+      <g transform="translate(278 915)">
+        <circle cx="33" cy="33" r="33" fill="#ded3c6"/><text x="33" y="42" text-anchor="middle" fill="#343332" font-size="26" font-weight="700">03</text>
+        <text x="83" y="27" fill="#f7f3ed" font-size="19" font-weight="700" letter-spacing="1.1">MAIS CLAREZA</text><text x="83" y="52" fill="#c7c5c3" font-size="16">para tomar decisões com segurança</text>
+      </g>
+    </g>
+
+    <!-- author portrait card -->
+    <rect x="573" y="650" width="244" height="316" rx="34" fill="#ebe7e2" stroke="#cbb8a4" stroke-width="3"/>
+    <image x="585" y="662" width="220" height="292" preserveAspectRatio="xMidYMid slice" clip-path="url(#portraitClip)" href="data:image/webp;base64,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"/>
+
+    <!-- author/footer -->
+    <text x="274" y="1050" fill="#f7f3ed" font-family="Georgia,serif" font-size="43" font-weight="700">Kelly Moraes</text>
+    <text x="274" y="1086" fill="#c7c5c3" font-family="Arial,sans-serif" font-size="15" letter-spacing="1.8">EXPRESS SOLUTION TAX &amp; ACCOUNTING, INC.</text>
+
+    <!-- spine copy -->
+    <g transform="translate(156 1060) rotate(-90)">
+      <text x="0" y="0" fill="#ebe7e2" font-family="Georgia,serif" font-size="26" font-weight="700">Guia Completo de Impostos para Imigrantes nos EUA</text>
+    </g>
+  </g>
+</svg>
