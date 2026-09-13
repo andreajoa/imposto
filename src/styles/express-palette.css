@@ -1,13 +1,188 @@
 /*
- * Express Solution brand palette override.
- * Reference: charcoal + warm ivory + taupe creative supplied by the client.
- * Intentionally contains no blue hue.
+ * Express Solution — official visual system.
+ * Reference: charcoal, warm gray, taupe, ivory and warm white.
+ * No blue hues are allowed in the website UI.
  */
 
 :root {
   color-scheme: light;
 }
 
+/* =====================================================
+   MAIN WEBSITE — force the official neutral palette
+   ===================================================== */
+.navbar,
+.navbar.scrolled {
+  background: rgba(45, 45, 45, 0.94) !important;
+  border-bottom-color: rgba(235, 231, 226, 0.12) !important;
+  box-shadow: 0 12px 34px rgba(45, 45, 45, 0.18) !important;
+}
+
+.navbar-brand,
+.navbar-links a,
+.nav-toggle {
+  color: #F7F3ED !important;
+}
+
+.navbar-brand span,
+.navbar-links a:hover {
+  color: #AAA39F !important;
+}
+
+.navbar-cta {
+  background: #EBE7E2 !important;
+  color: #2D2D2D !important;
+  box-shadow: 0 10px 25px rgba(45, 45, 45, 0.18) !important;
+}
+
+.nav-cart-badge {
+  background: #948A85 !important;
+  color: #F7F3ED !important;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(148, 138, 133, 0.22), transparent 28%),
+    radial-gradient(circle at 15% 70%, rgba(235, 231, 226, 0.07), transparent 32%),
+    linear-gradient(135deg, #2D2D2D 0%, #434242 52%, #5D5A57 100%) !important;
+}
+
+.hero::before {
+  background-image:
+    linear-gradient(rgba(235, 231, 226, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(235, 231, 226, 0.035) 1px, transparent 1px) !important;
+}
+
+.hero-text,
+.hero h1,
+.hero-subtitle,
+.hero-meta,
+.hero-author,
+.hero-feature-card,
+.hero-card {
+  color: #F7F3ED !important;
+}
+
+.hero h1 em,
+.hero-badge,
+.hero-feature-card strong,
+.hero-card strong,
+.hero-meta span:first-child {
+  color: #EBE7E2 !important;
+}
+
+.hero-badge {
+  background: rgba(235, 231, 226, 0.08) !important;
+  border-color: rgba(170, 163, 159, 0.55) !important;
+}
+
+.hero-feature-card,
+.hero-card {
+  background: rgba(247, 243, 237, 0.08) !important;
+  border-color: rgba(235, 231, 226, 0.15) !important;
+}
+
+.hero-pedestal::after {
+  background: linear-gradient(180deg, rgba(148, 138, 133, 0.32), rgba(247, 243, 237, 0.02)) !important;
+  border-color: rgba(148, 138, 133, 0.38) !important;
+}
+
+.btn-primary,
+.btn-cart-checkout,
+.cart-checkout-btn,
+.thankyou-download-button {
+  background: #EBE7E2 !important;
+  color: #2D2D2D !important;
+  box-shadow: 0 12px 28px rgba(45, 45, 45, 0.18) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-cart-checkout:hover,
+.btn-cart-checkout:focus-visible,
+.cart-checkout-btn:hover,
+.cart-checkout-btn:focus-visible,
+.thankyou-download-button:hover,
+.thankyou-download-button:focus-visible {
+  background: #AAA39F !important;
+  color: #2D2D2D !important;
+}
+
+.btn-secondary {
+  color: #F7F3ED !important;
+  border-color: rgba(235, 231, 226, 0.42) !important;
+}
+
+.btn-secondary:hover {
+  color: #EBE7E2 !important;
+  border-color: #AAA39F !important;
+}
+
+.proof-bar {
+  background: linear-gradient(180deg, #EBE7E2, #F7F3ED) !important;
+}
+
+.proof-inner,
+.problem-card,
+.comparison-card.light {
+  border-color: rgba(93, 90, 87, 0.12) !important;
+  box-shadow: 0 16px 42px rgba(45, 45, 45, 0.09) !important;
+}
+
+.proof-item {
+  border-right-color: rgba(93, 90, 87, 0.12) !important;
+}
+
+.problems {
+  background:
+    radial-gradient(circle at 10% 5%, rgba(148, 138, 133, 0.12), transparent 24%),
+    #F7F3ED !important;
+}
+
+.learn {
+  background: linear-gradient(180deg, #F7F3ED 0%, #EBE7E2 100%) !important;
+}
+
+.comparison-card.dark {
+  background: linear-gradient(135deg, #434242, #2D2D2D) !important;
+  color: #F7F3ED !important;
+}
+
+.vs-badge {
+  background: #AAA39F !important;
+  color: #2D2D2D !important;
+  box-shadow: 0 14px 30px rgba(45, 45, 45, 0.14) !important;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #2D2D2D, #434242) !important;
+}
+
+.footer,
+.thankyou-premium-footer {
+  background: #2D2D2D !important;
+}
+
+.footer,
+.footer a,
+.thankyou-premium-footer,
+.thankyou-premium-footer a {
+  color: rgba(247, 243, 237, 0.72) !important;
+}
+
+.cart-panel,
+.cart-header,
+.cart-footer {
+  border-color: rgba(93, 90, 87, 0.14) !important;
+}
+
+.cart-panel {
+  background: #F7F3ED !important;
+}
+
+/* =====================================================
+   BUSINESS OPENING PAGE
+   ===================================================== */
 .business-page {
   --bo-charcoal: #434242;
   --bo-charcoal-2: #2D2D2D;
@@ -20,69 +195,49 @@
   --bo-line: rgba(235, 231, 226, 0.20);
 }
 
-/* Main editorial surfaces */
 .business-page .bo-hero {
   background:
     radial-gradient(circle at 78% 20%, rgba(148, 138, 133, 0.20), transparent 27%),
-    linear-gradient(135deg, #2D2D2D 0%, #434242 58%, #2D2D2D 100%);
+    linear-gradient(135deg, #2D2D2D 0%, #434242 58%, #2D2D2D 100%) !important;
 }
 
 .business-page .bo-book-cover {
-  background: #434242;
+  background: #434242 !important;
 }
 
 .business-page .bo-book-spine {
-  background: linear-gradient(90deg, #2D2D2D, #5D5A57);
+  background: linear-gradient(90deg, #2D2D2D, #5D5A57) !important;
 }
 
 .business-page .bo-structure-section {
-  background: #EBE7E2;
+  background: #EBE7E2 !important;
 }
 
-.business-page .bo-stack-card--1 {
-  background: linear-gradient(145deg, #434242, #2D2D2D);
+.business-page .bo-stack-card--1,
+.business-page .bo-stack-card--3 {
+  background: linear-gradient(145deg, #434242, #2D2D2D) !important;
 }
 
 .business-page .bo-stack-card--2 {
-  background: linear-gradient(145deg, #5D5A57, #2D2D2D);
-}
-
-.business-page .bo-stack-card--3 {
-  background: linear-gradient(145deg, #434242, #2D2D2D);
+  background: linear-gradient(145deg, #5D5A57, #2D2D2D) !important;
 }
 
 .business-page .bo-fill .bo-section-index,
 .business-page .bo-section-head .bo-section-index,
 .business-page .bo-section-head h2 em {
-  color: #948A85;
+  color: #948A85 !important;
 }
 
 .business-page .bo-fill-note,
 .business-page .bo-section-head > p {
-  color: #5D5A57;
+  color: #5D5A57 !important;
 }
 
-/* Shared site controls keep the same brand language. */
-.btn-primary,
-.cart-checkout-btn,
-.thankyou-download-button {
-  background: #434242;
-  color: #F7F3ED;
-}
-
-.btn-primary:hover,
-.btn-primary:focus-visible,
-.cart-checkout-btn:hover,
-.cart-checkout-btn:focus-visible,
-.thankyou-download-button:hover,
-.thankyou-download-button:focus-visible {
-  background: #2D2D2D;
-}
-
+/* Accessibility */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline-color: #948A85;
+  outline-color: #948A85 !important;
 }
