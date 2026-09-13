@@ -1,31 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420" role="img" aria-labelledby="title desc">
+  <title id="title">Guia Completo de Impostos para Imigrantes nos EUA</title>
+  <desc id="desc">Capa do guia de Kelly Moraes, Express Solution Tax &amp; Accounting, Inc.</desc>
   <defs>
-    <linearGradient id="coverBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#5D5A57"/>
-      <stop offset="55%" stop-color="#434242"/>
-      <stop offset="100%" stop-color="#2D2D2D"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#434242"/>
+      <stop offset=".7" stop-color="#2D2D2D"/>
+      <stop offset="1" stop-color="#383634"/>
     </linearGradient>
-    <linearGradient id="spineShadow" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="rgba(45,45,45,0.38)"/>
-      <stop offset="100%" stop-color="rgba(45,45,45,0)"/>
-    </linearGradient>
+    <clipPath id="portraitClip"><rect x="174" y="236" width="96" height="126" rx="14"/></clipPath>
   </defs>
-  <rect x="2" y="2" width="196" height="276" rx="4" fill="url(#coverBg)"/>
-  <rect x="2" y="2" width="20" height="276" fill="url(#spineShadow)" rx="4"/>
-  <rect x="150" y="2" width="48" height="33" rx="3" fill="#EBE7E2" opacity=".96"/>
-  <line x1="40" y1="50" x2="160" y2="50" stroke="#948A85" stroke-width="1" opacity="0.9"/>
-  <text x="100" y="90" text-anchor="middle" font-size="32">📚</text>
-  <text x="100" y="125" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#F7F3ED" font-weight="bold">
-    <tspan x="100" dy="0">GUIA COMPLETO</tspan>
-    <tspan x="100" dy="20">DE IMPOSTOS</tspan>
+  <rect width="300" height="420" rx="8" fill="url(#bg)"/>
+  <path d="M190 400c39-20 77-52 110-98v118H188z" fill="#948A85" opacity=".42"/>
+  <g fill="#F7F3ED" text-anchor="middle">
+    <line x1="93" y1="34" x2="207" y2="34" stroke="#EBE7E2" stroke-width="2"/>
+    <line x1="108" y1="42" x2="192" y2="42" stroke="#EBE7E2" stroke-width="1"/>
+    <text x="150" y="69" font-family="Georgia,serif" font-style="italic" font-size="25">Express Solution</text>
+    <text x="150" y="88" font-family="Arial,sans-serif" font-size="8" letter-spacing="1.3">TAX &amp; ACCOUNTING, INC.</text>
+  </g>
+  <g fill="#EBE7E2" font-family="Georgia,serif" font-weight="700">
+    <text x="28" y="139" font-size="25">Guia Completo de</text>
+    <text x="28" y="175" font-size="34">Impostos para</text>
+    <text x="28" y="210" font-size="30">Imigrantes nos EUA</text>
+  </g>
+  <rect x="28" y="226" width="44" height="3" fill="#948A85"/>
+  <text x="28" y="251" fill="#C7C5C3" font-family="Arial,sans-serif" font-size="10.5">
+    <tspan x="28" dy="0">Entenda o sistema, evite erros e</tspan>
+    <tspan x="28" dy="15">organize sua vida financeira com</tspan>
+    <tspan x="28" dy="15">mais segurança, em português.</tspan>
   </text>
-  <text x="100" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#C7C5C3">
-    <tspan x="100" dy="0">Para Imigrantes</tspan>
-    <tspan x="100" dy="16">nos EUA</tspan>
-  </text>
-  <line x1="70" y1="195" x2="130" y2="195" stroke="#948A85" stroke-width="1.5"/>
-  <text x="100" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#F7F3ED">Kelly Moraes</text>
-  <text x="100" y="236" text-anchor="middle" font-size="7.5" fill="#EBE7E2">EXPRESS SOLUTION</text>
-  <rect x="55" y="248" width="90" height="20" rx="10" fill="none" stroke="#948A85" stroke-width="0.8"/>
-  <text x="100" y="262" text-anchor="middle" font-size="7.5" fill="#EBE7E2" font-weight="bold">SEMPRE ATUALIZADO</text>
+  <g font-family="Arial,sans-serif" fill="#EBE7E2" font-size="9.5">
+    <circle cx="41" cy="310" r="13" fill="#EBE7E2"/><text x="41" y="313" text-anchor="middle" fill="#2D2D2D" font-size="8">01</text>
+    <text x="61" y="313">PASSO A PASSO</text>
+    <circle cx="41" cy="342" r="13" fill="#EBE7E2"/><text x="41" y="345" text-anchor="middle" fill="#2D2D2D" font-size="8">02</text>
+    <text x="61" y="345">DICAS PRÁTICAS</text>
+  </g>
+  <image href="/image/autora.png" x="174" y="236" width="96" height="126" preserveAspectRatio="xMidYMin slice" clip-path="url(#portraitClip)"/>
+  <rect x="174" y="236" width="96" height="126" rx="14" fill="none" stroke="#948A85" stroke-width="2"/>
+  <text x="28" y="383" fill="#F7F3ED" font-family="Georgia,serif" font-size="17" font-weight="700">Kelly Moraes</text>
+  <text x="28" y="400" fill="#C7C5C3" font-family="Arial,sans-serif" font-size="7.5" letter-spacing=".65">EXPRESS SOLUTION TAX &amp; ACCOUNTING, INC.</text>
 </svg>
