@@ -1,0 +1,24 @@
+/* Final Express Solution overrides loaded last. */
+.business-page .bo-book {
+  animation: none !important;
+  transform: rotateY(-14deg) rotateX(3deg) rotateZ(1.3deg) !important;
+}
+
+.book-mockup-wrapper,
+.book-mockup-shadow,
+.book-mockup-img {
+  animation: none !important;
+}
+
+.thankyou-premium-hero,
+.thankyou-premium-footer {
+  background: #2d2d2d !important;
+}
+
+.thankyou-premium-page {
+  --blue: #434242;
+  --blue-dark: #2d2d2d;
+  --blue-light: #5d5a57;
+  --gold: #948a85;
+  --gold-light: #aaa39f;
+}
