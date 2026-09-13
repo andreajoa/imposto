@@ -92,6 +92,42 @@
 .embedded-checkout-items small { color: rgba(247,243,237,.48); font-size: 10px; }
 .embedded-checkout-items b { font-size: 13px; }
 
+.embedded-order-bump {
+  margin-top: 16px;
+  padding: 15px;
+  border: 1px dashed rgba(247,243,237,.22);
+  border-radius: 14px;
+  background: rgba(247,243,237,.05);
+}
+.embedded-order-bump-kicker {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(247,243,237,.55);
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+}
+.embedded-order-bump-product { display: grid; grid-template-columns: 48px 1fr auto; gap: 11px; align-items: center; }
+.embedded-order-bump-product img { width: 48px; height: 62px; object-fit: contain; }
+.embedded-order-bump-product div { display: grid; gap: 4px; }
+.embedded-order-bump-product strong { font-size: 12px; line-height: 1.25; }
+.embedded-order-bump-product small { color: rgba(247,243,237,.48); font-size: 10px; }
+.embedded-order-bump-product b { font-size: 12px; }
+.embedded-order-bump > button {
+  width: 100%;
+  margin-top: 11px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 10px;
+  background: #f7f3ed;
+  color: #2d2d2d;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.embedded-order-bump > button:hover { background: #fff; }
+
 .embedded-checkout-total {
   margin-top: 22px;
   padding-top: 20px;
