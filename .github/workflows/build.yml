@@ -23,3 +23,21 @@ jobs:
         run: npm ci
       - name: Build Vite app
         run: npm run build
+      - name: Validate serverless checkout modules
+        run: |
+          node --input-type=module <<'EOF'
+          const modules = [
+            './functions/api/stripe-config.js',
+            './functions/api/catalog.js',
+            './functions/api/checkout.js',
+            './functions/api/session-status.js',
+            './functions/api/contact.js',
+          ]
+          for (const file of modules) {
+            const mod = await import(file)
+            if (typeof mod.default !== 'function') {
+              throw new Error(`${file} is missing a Vercel default handler`)
+            }
+          }
+          console.log('Vercel serverless modules validated')
+          EOF
