@@ -23,6 +23,7 @@ export const PRODUCT_DEFS = {
     shortTitle: 'Abertura de Empresa nos EUA',
     priceEnv: 'STRIPE_PRICE_ABERTURA_EMPRESA', // optional backward compatibility only
     stripeNames: ['Abertura de Empresa nos EUA'],
+    fallbackUnitAmount: 2499,
     currency: 'usd',
     route: '/abertura-de-empresa-nos-eua',
     image: '/image/book-cover-business.svg',

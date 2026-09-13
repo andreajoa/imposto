@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import ContactForm from '../components/ContactForm'
+import { useCart } from '../context/CartContext'
 import '../styles/business-opening.css'
 
 const decisionCards = [
@@ -59,6 +60,9 @@ function clamp(value, min = 0, max = 1) {
 }
 
 export default function BusinessOpening() {
+  const { catalog, buyNow } = useCart()
+  const product = catalog['abertura-empresa']
+  const canBuy = product?.available && typeof product.price === 'number'
   const rootRef = useRef(null)
   const [activeStructure, setActiveStructure] = useState('llc')
 
@@ -181,8 +185,15 @@ export default function BusinessOpening() {
               Um guia prático para entender estruturas empresariais, organizar a abertura e enxergar as responsabilidades fiscais antes de tomar decisões que afetam o negócio inteiro.
             </p>
             <div className="bo-hero-actions">
-              <a className="bo-button bo-button--solid" href="#conteudo">Explorar a apostila <span>↘</span></a>
-              <a className="bo-button bo-button--ghost" href="#contato">Falar com a Express Solution</a>
+              <button
+                type="button"
+                className="bo-button bo-button--solid"
+                onClick={() => buyNow('abertura-empresa')}
+                disabled={!canBuy}
+              >
+                {canBuy ? `Comprar agora — $${product.price.toFixed(2)}` : 'Carregando checkout…'} <span>↘</span>
+              </button>
+              <a className="bo-button bo-button--ghost" href="#conteudo">Explorar a apostila</a>
             </div>
             <div className="bo-hero-signature">
               <strong>Kelly Moraes</strong>
