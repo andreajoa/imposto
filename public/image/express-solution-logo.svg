@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" role="img" aria-labelledby="title desc">
+  <title id="title">Express Solution</title>
+  <desc id="desc">Express Solution Tax &amp; Accounting, Inc.</desc>
+  <rect width="760" height="250" fill="#343433"/>
+  <g fill="none" stroke="#F4EFE7" stroke-width="4" opacity=".95">
+    <path d="M220 43h318M238 62h282"/>
+    <path d="M235 182h78v12M525 182h-78v12"/>
+  </g>
+  <text x="380" y="145" text-anchor="middle" fill="#F4EFE7" font-family="Georgia, Times New Roman, serif" font-size="72" font-style="italic">Express Solution</text>
+  <text x="380" y="196" text-anchor="middle" fill="#DED3C6" font-family="Arial, sans-serif" font-size="21" letter-spacing="2">TAX &amp; ACCOUNTING, INC.</text>
+</svg>
