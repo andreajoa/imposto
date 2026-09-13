@@ -27,7 +27,7 @@ export const PRODUCT_DEFS = {
     currency: 'usd',
     route: '/abertura-de-empresa-nos-eua',
     image: '/image/business-opening-cover.png',
-    downloadUrlEnv: 'DOWNLOAD_ABERTURA_EMPRESA_URL',
+    downloadUrl: '/abertura-de-empresa-nos-eua.pdf',
     orderBumpIds: ['guia-impostos'],
     crossSellIds: ['guia-impostos'],
   },

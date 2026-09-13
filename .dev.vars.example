@@ -16,6 +16,3 @@ SITE_URL=https://www.express-solution.com
 # The checkout now tries to resolve the active Stripe product/price automatically by product name/metadata.
 # STRIPE_PRICE_GUIA_IMPOSTOS=price_xxxxxxxxxxxxxxxxxxxxx
 # STRIPE_PRICE_ABERTURA_EMPRESA=price_xxxxxxxxxxxxxxxxxxxxx
-
-# Optional: when the second PDF is hosted at a stable URL, configure it here.
-DOWNLOAD_ABERTURA_EMPRESA_URL=/abertura-de-empresa-nos-eua.pdf
