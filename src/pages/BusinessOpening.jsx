@@ -1,3 +1,4 @@
+import { ResourceNav } from './Resources'
 import { useEffect, useRef, useState } from 'react'
 import ContactForm from '../components/ContactForm'
 import '../styles/business-opening.css'
@@ -63,16 +64,6 @@ export default function BusinessOpening() {
   const [activeStructure, setActiveStructure] = useState('llc')
 
   useEffect(() => {
-    const previousTitle = document.title
-    const description = document.querySelector('meta[name="description"]')
-    const previousDescription = description?.getAttribute('content') || ''
-
-    document.title = 'Abertura de Empresa nos EUA — Kelly Moraes | Express Solution'
-    description?.setAttribute(
-      'content',
-      'Guia em português sobre abertura de empresa nos EUA, LLC, Sole Proprietorship, Corporation, EIN, compliance e decisões fiscais. Por Kelly Moraes, Express Solution Tax & Accounting, Inc.'
-    )
-
     const root = rootRef.current
     if (!root) return undefined
 
@@ -143,8 +134,6 @@ export default function BusinessOpening() {
     update()
 
     return () => {
-      document.title = previousTitle
-      description?.setAttribute('content', previousDescription)
       lightCards.forEach((card) => card.removeEventListener('pointermove', onPointerMove))
       window.removeEventListener('scroll', requestUpdate)
       window.removeEventListener('resize', requestUpdate)
@@ -404,6 +393,7 @@ export default function BusinessOpening() {
         <p>
           Conteúdo educacional e informativo. Não substitui aconselhamento jurídico, tributário, migratório ou financeiro individualizado. Regras variam por estado e situação específica.
         </p>
+        <ResourceNav />
       </footer>
     </div>
   )

@@ -130,6 +130,7 @@ export async function stripeRequest(env, path, options = {}) {
   }
 
   const response = await fetch(`https://api.stripe.com${path}`, {
+    signal: AbortSignal.timeout(18000),
     ...options,
     headers: {
       Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
@@ -141,6 +142,10 @@ export async function stripeRequest(env, path, options = {}) {
   if (!response.ok) {
     const error = new Error(payload?.error?.message || 'Stripe request failed.')
     error.status = response.status
+    error.stripeCode = payload?.error?.code || ''
+    error.stripeParam = payload?.error?.param || ''
+    error.stripeType = payload?.error?.type || ''
+    error.requestId = response.headers.get('request-id') || ''
     throw error
   }
 

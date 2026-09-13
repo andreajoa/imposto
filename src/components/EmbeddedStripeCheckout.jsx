@@ -60,26 +60,25 @@ export default function EmbeddedStripeCheckout({ items, onReady }) {
       setState({ status: 'loading', message: 'Preparando seu checkout seguro…' })
 
       try {
-        const publishableKey = await resolvePublishableKey()
-        const Stripe = await loadStripeScript()
-        if (!active) return
-
-        const stripe = Stripe(publishableKey)
-        const checkout = await stripe.initEmbeddedCheckout({
-          fetchClientSecret: async () => {
-            const response = await fetch('/api/checkout', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-              body: JSON.stringify({ productIds }),
-              cache: 'no-store',
-            })
-            const payload = await response.json().catch(() => ({}))
-            if (!response.ok || !payload.clientSecret) {
-              throw new Error(payload.error || 'Não foi possível iniciar o pagamento.')
-            }
-            return payload.clientSecret
-          },
+        // Resolve the server session before mounting Stripe, so API failures do not
+        // leave its iframe waiting for a client secret until it times out.
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ productIds }),
+          cache: 'no-store',
+          signal: AbortSignal.timeout(25000),
         })
+        const payload = await response.json().catch(() => ({}))
+        if (!response.ok || !payload.clientSecret) {
+          const reference = payload.reference ? ` Referência: ${payload.reference}.` : ''
+          throw new Error((payload.error || 'Não foi possível iniciar o pagamento.') + reference)
+        }
+        if (!active) return
+        const [publishableKey, Stripe] = await Promise.all([resolvePublishableKey(), loadStripeScript()])
+        if (!active) return
+        const stripe = Stripe(publishableKey)
+        const checkout = await stripe.initEmbeddedCheckout({ clientSecret: payload.clientSecret })
 
         if (!active) {
           checkout.destroy?.()

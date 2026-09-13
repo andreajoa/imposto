@@ -17,9 +17,8 @@ test('native Vercel entry points and routing keep API out of SPA fallback', asyn
     assert.equal(typeof (await import(`../api/${name}.js`)).default, 'function')
   }
   const config = JSON.parse(fs.readFileSync('vercel.json'))
-  const matcher = new RegExp(`^${config.rewrites[0].source}$`)
-  assert.equal(matcher.test('/api/checkout'), false)
-  assert.equal(matcher.test('/abertura-de-empresa-nos-eua'), true)
+  assert.equal(config.rewrites, undefined)
+  assert.equal(config.cleanUrls, true)
 })
 
 test('rejects invalid products and missing configuration', async () => {
@@ -75,5 +74,27 @@ test('only confirmed sessions receive the purchased materials', async () => {
       assert.equal(data.products[0].downloadUrl, paid ? 'https://files.example/business.pdf' : '')
       assert.equal(data.products[0].image, '/image/business-opening-cover.png')
     }
+  } finally { globalThis.fetch = original }
+})
+
+test('invalid return URL is rejected before session creation', async () => {
+  const original = globalThis.fetch
+  try {
+    globalThis.fetch = async () => json({ data: [] })
+    const response = await onRequestPost({ request: request(['guia-impostos']), env: { ...env, SITE_URL: 'not-a-url' } })
+    assert.equal(response.status, 503)
+    assert.equal((await response.json()).reference, 'CHECKOUT_RETURN_URL')
+  } finally { globalThis.fetch = original }
+})
+test('Stripe session rejection returns diagnostic reference without raw secrets', async () => {
+  const original = globalThis.fetch
+  try {
+    globalThis.fetch = async (url) => url.includes('/v1/products?') ? json({ data: [] }) : new Response(JSON.stringify({ error: { message: 'Private diagnostic', type: 'invalid_request_error', code: 'parameter_invalid_empty', param: 'return_url' } }), { status: 400, headers: { 'request-id': 'req_diagnostic' } })
+    const response = await onRequestPost({ request: request(['guia-impostos']), env })
+    const body = await response.json()
+    assert.equal(response.status, 502)
+    assert.equal(body.reference, 'req_diagnostic')
+    assert.equal(body.parameter, 'return_url')
+    assert.equal(body.error.includes('Private diagnostic'), false)
   } finally { globalThis.fetch = original }
 })

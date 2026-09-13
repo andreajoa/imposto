@@ -25,6 +25,8 @@ jobs:
         run: node --test tests/checkout.test.js
       - name: Build Vite app
         run: npm run build
+      - name: Validate SEO output
+        run: node --test tests/seo.test.js
       - name: Validate serverless checkout modules
         run: |
           node --input-type=module <<'EOF'

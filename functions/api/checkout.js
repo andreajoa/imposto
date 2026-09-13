@@ -40,7 +40,14 @@ async function createCheckout(body, env, origin) {
   params.set('mode', 'payment')
   params.set('customer_creation', 'always')
   params.set('billing_address_collection', 'auto')
-  params.set('return_url', `${String(env.SITE_URL || origin).replace(/\/$/, '')}/obrigado?session_id={CHECKOUT_SESSION_ID}`)
+  let siteUrl
+  try {
+    siteUrl = new URL(String(env.SITE_URL || origin).trim())
+    if (!['https:', 'http:'].includes(siteUrl.protocol)) throw new Error('Invalid site URL')
+  } catch {
+    return { status: 503, data: { error: 'Não foi possível preparar o retorno da compra. Entre em contato com o suporte.', reference: 'CHECKOUT_RETURN_URL' } }
+  }
+  params.set('return_url', `${siteUrl.origin}/obrigado?session_id={CHECKOUT_SESSION_ID}`)
   params.set('metadata[product_ids]', productIds.join(','))
 
   resolved.forEach(({ product, price }, index) => {
@@ -68,8 +75,16 @@ async function createCheckout(body, env, origin) {
 
     return { status: 200, data: { clientSecret: session.client_secret } }
   } catch (error) {
-    console.error('Stripe checkout error', error.message)
-    return { status: 502, data: { error: 'Não foi possível iniciar o pagamento agora. Tente novamente em instantes.' } }
+    console.error('Stripe checkout error', JSON.stringify({
+      message: error.message, code: error.stripeCode, param: error.stripeParam,
+      type: error.stripeType, requestId: error.requestId,
+    }))
+    return { status: 502, data: {
+      error: 'Não foi possível iniciar o pagamento agora. Tente novamente em instantes.',
+      reference: error.requestId || 'CHECKOUT_SESSION_FAILED',
+      code: error.stripeCode || error.stripeType || 'checkout_unavailable',
+      parameter: error.stripeParam || undefined,
+    } }
   }
 }
 

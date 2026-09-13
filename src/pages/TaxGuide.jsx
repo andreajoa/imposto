@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { ResourceNav } from './Resources'
+import { useEffect, useRef } from 'react'
 import { useCart, BOOK } from '../context/CartContext'
 import CartSlideOut from '../components/CartSlideOut'
 import ContactForm from '../components/ContactForm'
@@ -69,6 +70,8 @@ function GuideBookMockup({ compact = false }) {
         alt="Guia Completo de Impostos para Imigrantes nos EUA, por Kelly Moraes"
         loading={compact ? 'lazy' : 'eager'}
         decoding="async"
+        width="447" height="558"
+        fetchpriority={compact ? "auto" : "high"}
       />
     </div>
   )
@@ -79,31 +82,7 @@ export default function TaxGuide() {
   const { buyNow } = useCart()
   const purchase = () => buyNow(BOOK.id)
 
-  const schema = useMemo(() => ({
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: BOOK.title,
-    description: 'Guia digital em português sobre organização e compreensão do sistema de impostos nos Estados Unidos.',
-    brand: { '@type': 'Brand', name: 'Express Solution Tax & Accounting, Inc.' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      price: BOOK.price.toFixed(2),
-      availability: 'https://schema.org/InStock',
-    },
-  }), [])
-
   useEffect(() => {
-    const previousTitle = document.title
-    const description = document.querySelector('meta[name="description"]')
-    const previousDescription = description?.getAttribute('content') || ''
-
-    document.title = 'Guia Completo de Impostos para Imigrantes nos EUA | Kelly Moraes'
-    description?.setAttribute(
-      'content',
-      'Guia digital em português para brasileiros e imigrantes nos EUA entenderem documentos, rendas, créditos, deduções, organização e cuidados na declaração de impostos.'
-    )
-
     const root = rootRef.current
     if (!root) return undefined
 
@@ -167,8 +146,6 @@ export default function TaxGuide() {
     update()
 
     return () => {
-      document.title = previousTitle
-      description?.setAttribute('content', previousDescription)
       window.removeEventListener('scroll', requestUpdate)
       window.removeEventListener('resize', requestUpdate)
       if (frame) cancelAnimationFrame(frame)
@@ -179,7 +156,6 @@ export default function TaxGuide() {
 
   return (
     <div className="tax-guide-page" ref={rootRef}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="tg-progress" aria-hidden="true"><span data-tg-progress /></div>
 
       <header className="tg-nav">
@@ -395,6 +371,7 @@ export default function TaxGuide() {
           <a href="mailto:support@express-solution.com">support@express-solution.com</a>
           <a href="/abertura-de-empresa-nos-eua">Abertura de Empresa nos EUA</a>
         </div>
+        <ResourceNav />
       </footer>
 
       <button className="tg-mobile-buy" onClick={purchase}>
