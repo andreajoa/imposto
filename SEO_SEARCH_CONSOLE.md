@@ -37,3 +37,6 @@
 - https://www.irs.gov/individuals/international-taxpayers/foreign-persons
 - https://www.mass.gov/personal-income-tax
 - https://www.mass.gov/guides/personal-income-tax-for-part-year-residents
+
+## Checkout cause confirmed by production log
+Stripe rejected ui_mode=embedded because the active API version requires embedded_page. Updated the session parameter and its regression test. Revalidate session creation after this preview is promoted; no payment was submitted.

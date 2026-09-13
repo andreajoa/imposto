@@ -36,7 +36,7 @@ async function createCheckout(body, env, origin) {
   }
 
   const params = new URLSearchParams()
-  params.set('ui_mode', 'embedded')
+  params.set('ui_mode', 'embedded_page')
   params.set('mode', 'payment')
   params.set('customer_creation', 'always')
   params.set('billing_address_collection', 'auto')

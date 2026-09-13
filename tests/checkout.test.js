@@ -42,7 +42,7 @@ test('each product and combined checkout use correct Stripe prices and metadata'
       assert.equal(response.status, 200)
       assert.equal(params.get('metadata[product_ids]'), ids.join(','))
       ids.forEach((id, index) => assert.equal(params.get(`line_items[${index}][price]`), `price_${id}`))
-      assert.equal(params.get('ui_mode'), 'embedded')
+      assert.equal(params.get('ui_mode'), 'embedded_page')
       assert.equal(params.get('return_url'), `${env.SITE_URL}/obrigado?session_id={CHECKOUT_SESSION_ID}`)
     }
   } finally { globalThis.fetch = original }
