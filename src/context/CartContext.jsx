@@ -60,7 +60,7 @@ export function CartProvider({ children }) {
               ...base,
               ...remote,
               price: typeof remote.price === 'number' ? remote.price : base.price,
-              available: Boolean(remote.available),
+              available: remote.configured ? Boolean(remote.available) : base.available,
             }
           }
           return next
