@@ -12,28 +12,34 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CartSlideOut from './components/CartSlideOut'
 import ThankYou from './pages/ThankYou'
+import BusinessOpening from './pages/BusinessOpening'
+
+function TaxGuideLanding() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <ProofBar />
+      <Problems />
+      <Learn />
+      <Tools />
+      <Author />
+      <CTA />
+      <Contact />
+      <Footer />
+      <CartSlideOut />
+    </>
+  )
+}
 
 export default function App() {
   return (
     <BrowserRouter>
       <CartProvider>
         <Routes>
-          <Route path="obrigado" element={<ThankYou />} />
-          <Route path="*" element={
-            <>
-              <Navbar />
-              <Hero />
-              <ProofBar />
-              <Problems />
-              <Learn />
-              <Tools />
-              <Author />
-              <CTA />
-              <Contact />
-              <Footer />
-              <CartSlideOut />
-            </>
-          } />
+          <Route path="/obrigado" element={<ThankYou />} />
+          <Route path="/abertura-de-empresa-nos-eua" element={<BusinessOpening />} />
+          <Route path="*" element={<TaxGuideLanding />} />
         </Routes>
       </CartProvider>
     </BrowserRouter>
