@@ -201,14 +201,6 @@
     linear-gradient(135deg, #2D2D2D 0%, #434242 58%, #2D2D2D 100%) !important;
 }
 
-.business-page .bo-book-cover {
-  background: #434242 !important;
-}
-
-.business-page .bo-book-spine {
-  background: linear-gradient(90deg, #2D2D2D, #5D5A57) !important;
-}
-
 .business-page .bo-structure-section {
   background: #EBE7E2 !important;
 }

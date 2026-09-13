@@ -115,19 +115,6 @@
 
 .bo-hero-visual { min-height: 620px; display: grid; place-items: center; }
 .bo-book-stage { position: relative; width: min(420px, 80vw); perspective: 1400px; }
-.bo-book-shadow { position: absolute; left: 7%; right: -2%; bottom: -34px; height: 90px; border-radius: 50%; background: rgba(0,0,0,.45); filter: blur(30px); transform: rotate(-4deg); }
-.bo-book { position: relative; width: 100%; aspect-ratio: 2 / 3; transform: rotateY(-14deg) rotateX(3deg) rotateZ(1.3deg); transform-style: preserve-3d; animation: boFloat 5.8s ease-in-out infinite; }
-.bo-book-cover { position: absolute; inset: 0; overflow: hidden; border-radius: 6px 20px 20px 6px; background: #343433; box-shadow: 28px 30px 70px rgba(0,0,0,.35), inset 1px 0 rgba(255,255,255,.1); padding: 34px 32px 28px; }
-.bo-book-cover::before { content: ''; position: absolute; left: 22px; top: 18px; width: 150px; height: 76px; border-radius: 17px; background: var(--bo-ivory); transform: translate(-52px,-42px); }
-.bo-book-cover::after { content: ''; position: absolute; right: -22px; bottom: -38px; width: 136px; height: 100px; border-radius: 20px; background: var(--bo-ivory); }
-.bo-book-spine { position: absolute; left: -16px; top: 8px; bottom: 8px; width: 23px; transform: rotateY(75deg); transform-origin: right; border-radius: 4px 0 0 4px; background: linear-gradient(90deg,#171716,#393836); }
-.bo-book-logo { position: relative; z-index: 2; display: block; width: 78%; height: 82px; object-fit: cover; margin: 0 auto 27px; }
-.bo-book-title { position: relative; z-index: 2; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(34px, 4vw, 50px); line-height: 1.03; letter-spacing: -.04em; }
-.bo-book-cover > p { position: relative; z-index: 2; margin: 18px 0; color: var(--bo-beige); font-size: 12px; line-height: 1.5; max-width: 80%; }
-.bo-book-photo-frame { position: absolute; z-index: 2; right: 24px; bottom: 81px; width: 56%; height: 43%; padding: 8px; border-radius: 22px; background: var(--bo-ivory); overflow: hidden; }
-.bo-book-photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
-.bo-book-author { position: absolute; z-index: 2; left: 30px; bottom: 46px; font-family: 'Playfair Display', Georgia, serif; font-size: 18px; }
-.bo-book-company { position: absolute; z-index: 2; left: 30px; bottom: 26px; font-size: 7.7px; text-transform: uppercase; letter-spacing: .055em; color: var(--bo-beige); }
 
 .bo-hero-note { position: absolute; z-index: 5; display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1px solid rgba(244,239,231,.16); border-radius: 13px; background: rgba(39,39,38,.78); backdrop-filter: blur(15px); box-shadow: 0 20px 50px rgba(0,0,0,.18); }
 .bo-hero-note strong { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; color: var(--bo-ivory); }
@@ -141,7 +128,6 @@
 .bo-dot-grid { width: 106px; height: 76px; opacity: .9; background-image: radial-gradient(circle, currentColor 2.2px, transparent 2.4px); background-size: 17px 17px; color: var(--bo-ivory); }
 .bo-dot-grid--hero { position: absolute; z-index: 2; top: 125px; right: 5.6vw; }
 
-@keyframes boFloat { 0%,100% { transform: rotateY(-14deg) rotateX(3deg) rotateZ(1.3deg) translateY(0); } 50% { transform: rotateY(-11deg) rotateX(2deg) rotateZ(.5deg) translateY(-14px); } }
 
 .bo-trust-strip { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 78px; padding: 20px 36px; overflow: hidden; background: var(--bo-beige); color: var(--bo-charcoal); white-space: nowrap; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .bo-trust-strip i { width: 4px; height: 4px; border-radius: 50%; background: var(--bo-taupe); }

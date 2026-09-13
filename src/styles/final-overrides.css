@@ -53,17 +53,10 @@
 }
 
 .business-page .bo-book-stage::before,
-.business-page .bo-book-stage::after,
-.business-page .bo-book-stage > .bo-book,
-.business-page .bo-book-stage > .bo-book-shadow {
+.business-page .bo-book-stage::after {
   display: none !important;
   content: none !important;
   visibility: hidden !important;
-  animation: none !important;
-  transform: none !important;
-}
-
-.business-page .bo-book {
   animation: none !important;
   transform: none !important;
 }
