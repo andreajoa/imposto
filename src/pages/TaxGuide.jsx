@@ -62,53 +62,22 @@ function clamp(value, min = 0, max = 1) {
 
 function GuideBookMockup({ compact = false }) {
   return (
-    <div className={`tg-book-stage${compact ? ' tg-book-stage--compact' : ''}`} aria-label="Capa do Guia Completo de Impostos para Imigrantes nos EUA">
-      <div className="tg-book-shadow" aria-hidden="true" />
-      <article className="tg-book" aria-hidden="true">
-        <div className="tg-book-spine">
-          <span>Guia Completo de Impostos para Imigrantes nos EUA</span>
-          <i />
-          <strong>Kelly Moraes</strong>
-        </div>
-        <div className="tg-book-face">
-          <div className="tg-book-brand">
-            <span className="tg-brand-line" />
-            <strong>Express Solution</strong>
-            <small>TAX &amp; ACCOUNTING, INC.</small>
-          </div>
-
-          <div className="tg-book-watermark" aria-hidden="true">
-            <span>USA</span>
-            <i>✦ ✦ ✦</i>
-          </div>
-
-          <h3>Guia Completo de<br />Impostos para<br />Imigrantes nos EUA</h3>
-          <div className="tg-book-rule" />
-          <p>Entenda o sistema, evite erros e organize sua vida financeira com mais segurança — tudo explicado em português.</p>
-
-          <div className="tg-book-benefits">
-            <span><b>01</b> Passo a passo simplificado</span>
-            <span><b>02</b> Dicas práticas e estratégias</span>
-            <span><b>03</b> Mais organização e clareza</span>
-          </div>
-
-          <div className="tg-book-photo">
-            <img src="/image/autora.png" alt="" />
-          </div>
-
-          <div className="tg-book-footer">
-            <strong>Kelly Moraes</strong>
-            <span>Express Solution Tax &amp; Accounting, Inc.</span>
-          </div>
-        </div>
-      </article>
+    <div className={`tg-book-stage${compact ? ' tg-book-stage--compact' : ''}`}>
+      <img
+        className="tg-book-premium"
+        src="/image/tax-guide-3d.svg"
+        alt="Guia Completo de Impostos para Imigrantes nos EUA, por Kelly Moraes"
+        loading={compact ? 'lazy' : 'eager'}
+        decoding="async"
+      />
     </div>
   )
 }
 
 export default function TaxGuide() {
   const rootRef = useRef(null)
-  const { addToCart, toggleCart, items } = useCart()
+  const { buyNow } = useCart()
+  const purchase = () => buyNow(BOOK.id)
 
   const schema = useMemo(() => ({
     '@context': 'https://schema.org',
@@ -223,8 +192,8 @@ export default function TaxGuide() {
           <a href="#ferramentas">Ferramentas</a>
           <a href="#autora">Autora</a>
         </nav>
-        <button className="tg-nav-buy" onClick={items.length ? toggleCart : addToCart}>
-          {items.length ? 'Ver carrinho' : `Comprar • $${BOOK.price.toFixed(2)}`}
+        <button className="tg-nav-buy" onClick={purchase}>
+          Comprar • ${BOOK.price.toFixed(2)}
         </button>
       </header>
 
@@ -239,7 +208,7 @@ export default function TaxGuide() {
             </p>
 
             <div className="tg-hero-actions">
-              <button className="tg-button tg-button--light" onClick={addToCart}>Quero o guia completo <span>↗</span></button>
+              <button className="tg-button tg-button--light" onClick={purchase}>Quero o guia completo <span>↗</span></button>
               <a className="tg-button tg-button--ghost" href="#conteudo">Ver o que tem dentro</a>
             </div>
 
@@ -369,7 +338,7 @@ export default function TaxGuide() {
               <li>Acesso liberado após confirmação do pagamento</li>
             </ul>
 
-            <button className="tg-button tg-button--dark tg-button--full" onClick={addToCart}>
+            <button className="tg-button tg-button--dark tg-button--full" onClick={purchase}>
               Comprar o guia agora <span>↗</span>
             </button>
             <small>Pagamento processado com segurança pelo checkout conectado ao site.</small>
@@ -428,11 +397,11 @@ export default function TaxGuide() {
         </div>
       </footer>
 
-      <button className="tg-mobile-buy" onClick={addToCart}>
+      <button className="tg-mobile-buy" onClick={purchase}>
         <span>Guia completo</span><strong>${BOOK.price.toFixed(2)} • Comprar</strong>
       </button>
 
-      <CartSlideOut />
+      <CartSlideOut checkoutOnly />
     </div>
   )
 }
