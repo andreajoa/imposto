@@ -11,20 +11,24 @@
   overflow: visible !important;
 }
 
-.tax-guide-page .tg-book-stage::before {
-  content: "" !important;
+.tax-guide-page .tg-book-stage::before,
+.tax-guide-page .tg-book-stage::after {
+  display: none !important;
+  content: none !important;
+}
+
+.tax-guide-page .tg-book-premium {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  background: url('/image/tax-guide-3d.svg') center / contain no-repeat !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   transform: none !important;
-  box-shadow: none !important;
-  filter: none !important;
   animation: none !important;
-}
-
-.tax-guide-page .tg-book-stage::after {
-  display: none !important;
+  filter: none !important;
+  drop-shadow: none !important;
 }
 
 .tax-guide-page .tg-book-stage > .tg-book,
