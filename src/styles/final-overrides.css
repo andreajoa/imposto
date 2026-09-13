@@ -1,43 +1,30 @@
 /* Final Express Solution overrides loaded last. */
 
-/* TAX GUIDE: replace the experimental CSS-built cover with a clean, stable product mockup. */
+/* TAX GUIDE: one stable 3D asset. No layered text and no swinging motion. */
 .tax-guide-page .tg-book-stage {
   position: relative !important;
-  width: min(500px, 100%) !important;
-  aspect-ratio: 0.78 !important;
+  width: min(570px, 100%) !important;
+  aspect-ratio: 980 / 1320 !important;
   display: grid !important;
   place-items: center !important;
-  perspective: 1200px !important;
+  perspective: none !important;
+  overflow: visible !important;
 }
 
 .tax-guide-page .tg-book-stage::before {
   content: "" !important;
   display: block !important;
-  width: 76% !important;
-  aspect-ratio: 300 / 420 !important;
-  border-radius: 4px 10px 10px 4px !important;
-  background: url('/image/book-cover-cart.svg') center / cover no-repeat !important;
-  transform: perspective(1200px) rotateY(-7deg) rotateZ(-0.35deg) !important;
-  transform-origin: center !important;
-  box-shadow:
-    8px 0 0 #e6dfd6,
-    12px 0 0 #292827,
-    28px 34px 60px rgba(0, 0, 0, .34) !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: url('/image/tax-guide-3d.svg') center / contain no-repeat !important;
+  transform: none !important;
+  box-shadow: none !important;
   filter: none !important;
   animation: none !important;
 }
 
 .tax-guide-page .tg-book-stage::after {
-  content: "" !important;
-  position: absolute !important;
-  left: 17% !important;
-  right: 15% !important;
-  bottom: 5.5% !important;
-  height: 7% !important;
-  border-radius: 50% !important;
-  background: radial-gradient(ellipse, rgba(0,0,0,.36), transparent 68%) !important;
-  filter: blur(10px) !important;
-  z-index: -1 !important;
+  display: none !important;
 }
 
 .tax-guide-page .tg-book-stage > .tg-book,
@@ -46,7 +33,7 @@
 }
 
 .tax-guide-page .tg-book-stage--compact {
-  width: min(410px, 100%) !important;
+  width: min(430px, 100%) !important;
 }
 
 /* BUSINESS-OPENING book: keep it static; never swing or float. */
@@ -77,16 +64,7 @@
 
 @media (max-width: 620px) {
   .tax-guide-page .tg-book-stage {
-    width: min(350px, 94vw) !important;
-    aspect-ratio: .82 !important;
-  }
-
-  .tax-guide-page .tg-book-stage::before {
-    width: 80% !important;
-    transform: perspective(1000px) rotateY(-5deg) !important;
-    box-shadow:
-      6px 0 0 #e6dfd6,
-      9px 0 0 #292827,
-      20px 26px 42px rgba(0,0,0,.30) !important;
+    width: min(390px, 94vw) !important;
+    aspect-ratio: 980 / 1320 !important;
   }
 }
