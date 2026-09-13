@@ -1,7 +1,58 @@
 /* Final Express Solution overrides loaded last. */
+
+/* TAX GUIDE: replace the experimental CSS-built cover with a clean, stable product mockup. */
+.tax-guide-page .tg-book-stage {
+  position: relative !important;
+  width: min(500px, 100%) !important;
+  aspect-ratio: 0.78 !important;
+  display: grid !important;
+  place-items: center !important;
+  perspective: 1200px !important;
+}
+
+.tax-guide-page .tg-book-stage::before {
+  content: "" !important;
+  display: block !important;
+  width: 76% !important;
+  aspect-ratio: 300 / 420 !important;
+  border-radius: 4px 10px 10px 4px !important;
+  background: url('/image/book-cover-cart.svg') center / cover no-repeat !important;
+  transform: perspective(1200px) rotateY(-7deg) rotateZ(-0.35deg) !important;
+  transform-origin: center !important;
+  box-shadow:
+    8px 0 0 #e6dfd6,
+    12px 0 0 #292827,
+    28px 34px 60px rgba(0, 0, 0, .34) !important;
+  filter: none !important;
+  animation: none !important;
+}
+
+.tax-guide-page .tg-book-stage::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 17% !important;
+  right: 15% !important;
+  bottom: 5.5% !important;
+  height: 7% !important;
+  border-radius: 50% !important;
+  background: radial-gradient(ellipse, rgba(0,0,0,.36), transparent 68%) !important;
+  filter: blur(10px) !important;
+  z-index: -1 !important;
+}
+
+.tax-guide-page .tg-book-stage > .tg-book,
+.tax-guide-page .tg-book-stage > .tg-book-shadow {
+  display: none !important;
+}
+
+.tax-guide-page .tg-book-stage--compact {
+  width: min(410px, 100%) !important;
+}
+
+/* BUSINESS-OPENING book: keep it static; never swing or float. */
 .business-page .bo-book {
   animation: none !important;
-  transform: rotateY(-14deg) rotateX(3deg) rotateZ(1.3deg) !important;
+  transform: rotateY(-10deg) rotateX(1.5deg) rotateZ(.2deg) !important;
 }
 
 .book-mockup-wrapper,
@@ -10,6 +61,7 @@
   animation: none !important;
 }
 
+/* Thank-you and shared legacy surfaces also follow the official neutral palette. */
 .thankyou-premium-hero,
 .thankyou-premium-footer {
   background: #2d2d2d !important;
@@ -21,4 +73,20 @@
   --blue-light: #5d5a57;
   --gold: #948a85;
   --gold-light: #aaa39f;
+}
+
+@media (max-width: 620px) {
+  .tax-guide-page .tg-book-stage {
+    width: min(350px, 94vw) !important;
+    aspect-ratio: .82 !important;
+  }
+
+  .tax-guide-page .tg-book-stage::before {
+    width: 80% !important;
+    transform: perspective(1000px) rotateY(-5deg) !important;
+    box-shadow:
+      6px 0 0 #e6dfd6,
+      9px 0 0 #292827,
+      20px 26px 42px rgba(0,0,0,.30) !important;
+  }
 }
