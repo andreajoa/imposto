@@ -21,17 +21,21 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Test checkout
+        run: node --test tests/checkout.test.js
       - name: Build Vite app
         run: npm run build
+      - name: Validate SEO output
+        run: node --test tests/seo.test.js
       - name: Validate serverless checkout modules
         run: |
           node --input-type=module <<'EOF'
           const modules = [
-            './functions/api/stripe-config.js',
-            './functions/api/catalog.js',
-            './functions/api/checkout.js',
-            './functions/api/session-status.js',
-            './functions/api/contact.js',
+            './api/stripe-config.js',
+            './api/catalog.js',
+            './api/checkout.js',
+            './api/session-status.js',
+            './api/contact.js',
           ]
           for (const file of modules) {
             const mod = await import(file)

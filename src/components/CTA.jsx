@@ -7,7 +7,7 @@ export default function CTA() {
     <section className="cta-section" id="contato">
       <div className="cta-inner">
         <div className="cta-product-mini">
-          <img src="/image/book-cover-cart.svg" alt="Guia Completo de Impostos para Imigrantes nos EUA" />
+          <img src="/image/tax-guide-cover.png" alt="Guia Completo de Impostos para Imigrantes nos EUA" />
           <div>
             <h3>Guia Completo de Impostos para Imigrantes nos EUA</h3>
             <p>PDF • Acesso imediato • Em português</p>
