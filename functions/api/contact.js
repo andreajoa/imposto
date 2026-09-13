@@ -6,7 +6,7 @@ const MAX = {
   message: 3000,
 }
 
-function json(data, status = 200) {
+function jsonResponse(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
@@ -33,21 +33,13 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;')
 }
 
-export async function onRequestPost({ request, env }) {
+async function sendContact(body, env) {
   if (!env.RESEND_API_KEY || !env.RESEND_FROM) {
     console.error('Contact form missing RESEND_API_KEY or RESEND_FROM')
-    return json({ error: 'O formulário está temporariamente indisponível. Use support@express-solution.com.' }, 503)
+    return { status: 503, data: { error: 'O formulário está temporariamente indisponível. Use support@express-solution.com.' } }
   }
 
-  let body
-  try {
-    body = await request.json()
-  } catch {
-    return json({ error: 'Dados inválidos.' }, 400)
-  }
-
-  // Honeypot: bots tend to fill this hidden field. Return success without sending.
-  if (clean(body.companyWebsite, 200)) return json({ ok: true })
+  if (clean(body.companyWebsite, 200)) return { status: 200, data: { ok: true } }
 
   const name = clean(body.name, MAX.name)
   const email = clean(body.email, MAX.email).toLowerCase()
@@ -56,7 +48,7 @@ export async function onRequestPost({ request, env }) {
   const message = clean(body.message, MAX.message)
 
   if (name.length < 2 || !isEmail(email) || message.length < 10) {
-    return json({ error: 'Preencha nome, e-mail válido e uma mensagem com pelo menos 10 caracteres.' }, 400)
+    return { status: 400, data: { error: 'Preencha nome, e-mail válido e uma mensagem com pelo menos 10 caracteres.' } }
   }
 
   const safe = {
@@ -102,12 +94,36 @@ export async function onRequestPost({ request, env }) {
   const resendPayload = await resendResponse.json().catch(() => ({}))
   if (!resendResponse.ok) {
     console.error('Resend contact error', resendResponse.status, resendPayload)
-    return json({ error: 'Não foi possível enviar agora. Escreva para support@express-solution.com.' }, 502)
+    return { status: 502, data: { error: 'Não foi possível enviar agora. Escreva para support@express-solution.com.' } }
   }
 
-  return json({ ok: true, id: resendPayload.id || null })
+  return { status: 200, data: { ok: true, id: resendPayload.id || null } }
+}
+
+export async function onRequestPost({ request, env }) {
+  let body
+  try { body = await request.json() } catch { return jsonResponse({ error: 'Dados inválidos.' }, 400) }
+  const result = await sendContact(body, env)
+  return jsonResponse(result.data, result.status)
 }
 
 export function onRequestOptions() {
   return new Response(null, { status: 204 })
+}
+
+export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store')
+  if (req.method === 'OPTIONS') return res.status(204).end()
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST, OPTIONS')
+    return res.status(405).json({ error: 'Método não permitido.' })
+  }
+
+  let body = req.body || {}
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body) } catch { return res.status(400).json({ error: 'Dados inválidos.' }) }
+  }
+
+  const result = await sendContact(body, process.env)
+  return res.status(result.status).json(result.data)
 }
