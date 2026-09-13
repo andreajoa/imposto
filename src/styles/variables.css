@@ -1,12 +1,12 @@
 :root {
-    --blue: #1A3D6E;
-    --blue-light: #2a5a9e;
-    --blue-dark: #0f2a4d;
-    --gold: #d4af69;
-    --gold-light: #e8cc8e;
-    --bg: #f3efe6;
-    --bg-white: #ffffff;
-    --text: #2c2c2c;
-    --text-secondary: #555;
-    --text-light: #888;
+    --blue: #2D2D2D;
+    --blue-light: #45423F;
+    --blue-dark: #20201F;
+    --gold: #A99683;
+    --gold-light: #DED3C6;
+    --bg: #F4EFE7;
+    --bg-white: #FFFCF7;
+    --text: #2D2D2D;
+    --text-secondary: #625A52;
+    --text-light: #8A7F75;
 }
