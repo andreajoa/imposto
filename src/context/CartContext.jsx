@@ -68,14 +68,6 @@ export function CartProvider({ children }) {
     return () => { active = false }
   }, [])
 
-  const addToCart = useCallback((requestedProductId = BOOK.id) => {
-    const productId = typeof requestedProductId === 'string' ? requestedProductId : BOOK.id
-    const product = catalog[productId]
-    if (!product || product.available === false) return
-    setItems((previous) => previous.some((item) => item.id === productId) ? previous : [...previous, { ...product, qty: 1 }])
-    setIsOpen(true)
-  }, [catalog])
-
   const buyNow = useCallback((requestedProductId = BOOK.id) => {
     const productId = typeof requestedProductId === 'string' ? requestedProductId : BOOK.id
     const product = catalog[productId]
@@ -84,6 +76,18 @@ export function CartProvider({ children }) {
     setIsOpen(false)
     setIsCheckoutOpen(true)
   }, [catalog])
+
+  const addToCart = useCallback((requestedProductId = BOOK.id) => {
+    if (typeof requestedProductId !== 'string') {
+      buyNow(BOOK.id)
+      return
+    }
+
+    const product = catalog[requestedProductId]
+    if (!product || product.available === false) return
+    setItems((previous) => previous.some((item) => item.id === requestedProductId) ? previous : [...previous, { ...product, qty: 1 }])
+    setIsOpen(true)
+  }, [catalog, buyNow])
 
   const removeFromCart = useCallback((productId) => {
     setItems((previous) => productId ? previous.filter((item) => item.id !== productId) : [])
