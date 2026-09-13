@@ -3,27 +3,27 @@ export default function Author() {
     <section className="section author-section" id="autora">
       <div className="author-inner">
         <div className="author-photo-wrap">
-          <img src="/image/autora.png" alt="Kelly Marques" className="author-photo" />
-          <div className="signature">Kelly Marques</div>
+          <img src="/image/autora.png" alt="Kelly Moraes" className="author-photo" />
+          <div className="signature">Kelly Moraes</div>
         </div>
 
         <div className="author-info">
           <div className="section-label">Conheça a autora</div>
-          <h3>Kelly Marques</h3>
+          <h3>Kelly Moraes</h3>
           <div className="author-role">Preparadora de Impostos</div>
           <p>
-            Com anos de experiência atendendo famílias imigrantes nos Estados Unidos, Kelly entende as dificuldades e medos de quem chega sem entender o sistema tributário americano.
+            Com experiência atendendo famílias imigrantes nos Estados Unidos, Kelly conhece as dúvidas de quem precisa organizar a vida tributária americana com mais clareza.
           </p>
           <p>
-            Criou este guia para que pessoas como você — que trabalham duro e querem fazer o certo — tenham acesso a informações claras, em português e baseadas em dados reais.
+            Na Express Solution Tax &amp; Accounting, Inc., o foco é traduzir assuntos complexos para uma linguagem compreensível, com organização, orientação e responsabilidade.
           </p>
         </div>
 
         <div className="author-points">
-          <div>👩‍💼 Especialista em impostos</div>
-          <div>🇧🇷 Conteúdo 100% em português</div>
-          <div>📊 Exemplos reais e práticos</div>
-          <div>💬 Foco em imigrantes brasileiros</div>
+          <div>👩‍💼 Atendimento tributário</div>
+          <div>🇧🇷 Conteúdo em português</div>
+          <div>📊 Explicações práticas</div>
+          <div>💬 Foco em brasileiros nos EUA</div>
         </div>
       </div>
     </section>
