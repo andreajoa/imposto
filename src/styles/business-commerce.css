@@ -1,0 +1,52 @@
+.bo-commerce-bar {
+  position: fixed;
+  z-index: 240;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: min(980px, calc(100vw - 28px));
+  min-height: 74px;
+  padding: 10px 12px 10px 14px;
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) auto auto;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid rgba(247,243,237,.12);
+  border-radius: 20px;
+  background: rgba(45,45,45,.94);
+  color: #f7f3ed;
+  box-shadow: 0 24px 70px rgba(0,0,0,.28);
+  backdrop-filter: blur(18px);
+}
+
+.bo-commerce-product { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.bo-commerce-product img { width: 42px; height: 54px; object-fit: contain; flex: none; }
+.bo-commerce-product span { min-width: 0; display: grid; gap: 3px; }
+.bo-commerce-product small { color: #948a85; font-size: 8px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.bo-commerce-product strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+
+.bo-commerce-crosssell {
+  padding: 9px 12px;
+  border-left: 1px solid rgba(247,243,237,.12);
+  color: rgba(247,243,237,.58);
+  text-decoration: none;
+  font-size: 10px;
+  line-height: 1.35;
+}
+.bo-commerce-crosssell:hover { color: #f7f3ed; }
+
+.bo-commerce-action { display: flex; align-items: center; gap: 12px; }
+.bo-commerce-action b { font-family: Georgia, serif; font-size: 20px; font-weight: 550; }
+.bo-commerce-action button { min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; background: #ebe7e2; color: #2d2d2d; font-weight: 850; cursor: pointer; }
+.bo-commerce-action button:hover { background: #f7f3ed; }
+
+@media (max-width: 760px) {
+  .business-page { padding-bottom: 84px; }
+  .bo-commerce-bar { bottom: 10px; width: calc(100vw - 20px); min-height: 62px; grid-template-columns: 1fr auto; gap: 10px; border-radius: 16px; }
+  .bo-commerce-product img { width: 34px; height: 44px; }
+  .bo-commerce-product strong { max-width: 42vw; font-size: 11px; }
+  .bo-commerce-crosssell { display: none; }
+  .bo-commerce-action { gap: 8px; }
+  .bo-commerce-action b { font-size: 16px; }
+  .bo-commerce-action button { min-height: 42px; padding-inline: 14px; font-size: 11px; }
+}
