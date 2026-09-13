@@ -1,5 +1,19 @@
 # Cloudflare Pages / Wrangler local development only.
-# Never commit a real API key.
+# Never commit real secret keys.
+
+# Contact / Resend
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxx
 RESEND_FROM=Express Solution <website@express-solution.com>
 CONTACT_TO=support@express-solution.com
+
+# Stripe embedded checkout
+STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxx
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxx
+SITE_URL=https://www.express-solution.com
+
+# One Stripe Price ID per guide. Product prices stay authoritative on Stripe.
+STRIPE_PRICE_GUIA_IMPOSTOS=price_xxxxxxxxxxxxxxxxxxxxx
+STRIPE_PRICE_ABERTURA_EMPRESA=price_xxxxxxxxxxxxxxxxxxxxx
+
+# Optional: when the second PDF is hosted at a stable URL, configure it here.
+DOWNLOAD_ABERTURA_EMPRESA_URL=/abertura-de-empresa-nos-eua.pdf
