@@ -1,14 +1,22 @@
 /* Final Express Solution overrides loaded last. */
 
-/* TAX GUIDE: one stable 3D asset. No layered text and no swinging motion. */
+/* =========================================================
+   OFFICIAL GUIDE COVERS
+   These are the exact 3D covers supplied by the client.
+   No CSS-built cover, no swing, no float, no layered mockup.
+   ========================================================= */
+
+/* TAX GUIDE — Guia Completo de Impostos para Imigrantes nos EUA */
 .tax-guide-page .tg-book-stage {
   position: relative !important;
-  width: min(570px, 100%) !important;
-  aspect-ratio: 980 / 1320 !important;
-  display: grid !important;
-  place-items: center !important;
-  perspective: none !important;
+  width: min(540px, 100%) !important;
+  aspect-ratio: 447 / 558 !important;
+  display: block !important;
   overflow: visible !important;
+  perspective: none !important;
+  background: url('/image/tax-guide-cover.webp') center / contain no-repeat !important;
+  transform: none !important;
+  animation: none !important;
 }
 
 .tax-guide-page .tg-book-stage::before,
@@ -17,33 +25,48 @@
   content: none !important;
 }
 
-.tax-guide-page .tg-book-premium {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  animation: none !important;
-  filter: none !important;
-  drop-shadow: none !important;
-}
-
+/* The old generated SVG remains in the markup only as a compatibility fallback.
+   The official client-supplied cover above is the visible artwork. */
+.tax-guide-page .tg-book-premium,
 .tax-guide-page .tg-book-stage > .tg-book,
 .tax-guide-page .tg-book-stage > .tg-book-shadow {
   display: none !important;
+  visibility: hidden !important;
+  animation: none !important;
+  transform: none !important;
 }
 
 .tax-guide-page .tg-book-stage--compact {
   width: min(430px, 100%) !important;
+  aspect-ratio: 447 / 558 !important;
 }
 
-/* BUSINESS-OPENING book: keep it static; never swing or float. */
+/* BUSINESS OPENING — Abertura de Empresa nos EUA */
+.business-page .bo-book-stage {
+  position: relative !important;
+  width: min(500px, 100%) !important;
+  aspect-ratio: 447 / 558 !important;
+  display: block !important;
+  perspective: none !important;
+  transform: none !important;
+  animation: none !important;
+  background: url('/image/business-opening-cover.webp') center / contain no-repeat !important;
+}
+
+.business-page .bo-book-stage::before,
+.business-page .bo-book-stage::after,
+.business-page .bo-book-stage > .bo-book,
+.business-page .bo-book-stage > .bo-book-shadow {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+  animation: none !important;
+  transform: none !important;
+}
+
 .business-page .bo-book {
   animation: none !important;
-  transform: rotateY(-10deg) rotateX(1.5deg) rotateZ(.2deg) !important;
+  transform: none !important;
 }
 
 .book-mockup-wrapper,
@@ -66,9 +89,18 @@
   --gold-light: #aaa39f;
 }
 
-@media (max-width: 620px) {
-  .tax-guide-page .tg-book-stage {
-    width: min(390px, 94vw) !important;
-    aspect-ratio: 980 / 1320 !important;
+@media (max-width: 760px) {
+  .tax-guide-page .tg-book-stage,
+  .business-page .bo-book-stage {
+    width: min(390px, 92vw) !important;
+    aspect-ratio: 447 / 558 !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .tax-guide-page .tg-book-stage,
+  .business-page .bo-book-stage {
+    width: min(340px, 90vw) !important;
   }
 }
